@@ -1,6 +1,4 @@
-'use strict';
-
-import React, {Component} from 'react';
+import React from 'react';
 import {
   StyleSheet, 
   Text, 
@@ -8,7 +6,7 @@ import {
   Image
 } from 'react-native';
 
-class NoMoreCards extends Component {
+class NoMoreCards extends React.Component {
   constructor(props) {
     super(props);
   }

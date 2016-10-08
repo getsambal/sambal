@@ -62,26 +62,14 @@ export default React.createClass({
   cardRemoved (index) {
     console.log(`The index is ${index}`);
 
-    let CARD_REFRESH_LIMIT = 3
+    // let CARD_REFRESH_LIMIT = 3
 
     if (this.state.cards.length - index <= CARD_REFRESH_LIMIT + 1) {
-      console.log(`There are only ${this.state.cards.length - index - 1} cards left.`);
+      // console.log(`There are only ${this.state.cards.length - index - 1} cards left.`);
 
       if (!this.state.outOfCards) {
-        console.log(`Adding ${Cards2.length} more cards`)
-
         this.setState({
-          cards: this.state.cards.concat(Cards2),
-          outOfCards: true
-        })
-      }
-
-      if (!this.state.outOfCards) {
-        console.log(`Adding ${Cards3.length} more cards`)
-
-        this.setState({
-          cards: this.state.cards.concat(Cards3),
-          outOfCards: true
+          cards: this.state.cards,
         })
       }
 
@@ -89,27 +77,22 @@ export default React.createClass({
 
   },
   render() {
-    let titleConfig = { title: 'Sambal', tintColor: 'white', style : "fontFamily: 'Roboto Light'" };
     return (
       <View style={styles.container}>
-            <View style={styles.container}>
-              <SwipeCards
-                navigator={this.props.navigator}
-                style={styles.flexCenter}
-
-                cards={this.state.cards}
-                loop={true}
-
-                renderCard={(cardData) => <Card {...cardData} /> }
-                renderNoMoreCards={() => <NoMoreCards />}
-                showYup={false}
-                showNope={false}
-
-                handleYup={this.handleYup}
-                handleNope={this.handleNope}
-                cardRemoved={this.cardRemoved}
-              />
-          </View>
+        <View style={styles.container}>
+          <SwipeCards
+            navigator={this.props.navigator}
+            style={styles.flexCenter}
+            cards={this.state.cards}
+            loop={true}
+            renderCard={(cardData) => <Card {...cardData} /> }
+            showYup={true}
+            showNope={true}
+            handleYup={this.handleYup}
+            handleNope={this.handleNope}
+            cardRemoved={this.cardRemoved}
+          />
+        </View>
       </View>
     )
   }
@@ -118,10 +101,8 @@ export default React.createClass({
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    // alignItems: 'center',
     borderRadius: 5,
     overflow: 'hidden',
-    // borderColor: 'white',
     backgroundColor: 'white',
     borderWidth: 0,
     elevation: 1,
@@ -146,11 +127,6 @@ const styles = StyleSheet.create({
     color: '#754b33',
     paddingTop: 0,
     marginLeft: 20,
-  },
-  noMoreCards: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   flexCenter: {
     flex: 1,
