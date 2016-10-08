@@ -28,7 +28,7 @@ export default class RootNavigation extends React.Component {
         defaultRouteConfig={{
           styles: NavigationStyles.SlideHorizontal,
           navigationBar: {
-            backgroundColor: '#094da0',
+            backgroundColor: Colors.primary,
             tintColor: '#fff',
           },
         }} 
