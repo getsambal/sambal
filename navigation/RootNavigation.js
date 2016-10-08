@@ -10,6 +10,7 @@ import {
   StackNavigation,
   TabNavigation,
   TabNavigationItem,
+  NavigationStyles
 } from '@exponent/ex-navigation';
 import {
   FontAwesome,
@@ -22,15 +23,16 @@ export default class RootNavigation extends React.Component {
 
   render() {
     return (
-      <TabNavigation
-        tabBarHeight={56}
-        initialTab="home">
-        <TabNavigationItem
-          id="home"
-          renderIcon={isSelected => this._renderIcon('home', isSelected)}>
-          <StackNavigation initialRoute={Router.getRoute('home')} />
-        </TabNavigationItem>
-      </TabNavigation>
+      <StackNavigation 
+        initialRoute={Router.getRoute('home')}
+        defaultRouteConfig={{
+          styles: NavigationStyles.SlideHorizontal,
+          navigationBar: {
+            backgroundColor: '#094da0',
+            tintColor: '#fff',
+          },
+        }} 
+      />
     );
   }
 
