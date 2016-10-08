@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-export default class CardDetails extends React.Component {
+export default class AddFood extends React.Component {
   static route = {
     navigationBar: {
       title: 'Card Details',
@@ -17,7 +17,7 @@ export default class CardDetails extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Card Details</Text>
+        <Text>Add Food</Text>
       </View>
     );
   }
