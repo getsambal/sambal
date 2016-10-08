@@ -46,8 +46,7 @@ class AppContainer extends React.Component {
 
   render() {
     if (this.state.appIsReady) {
-      let { notification } = this.props.exp;
-      let initialRoute = Router.getRoute('rootNavigation', {notification});
+      let initialRoute = Router.getRoute('rootNavigation');
 
       return (
         <View style={styles.container}>
