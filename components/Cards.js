@@ -7,35 +7,29 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
+import Colors from '../constants/Colors';
 import SwipeCards from './swipe-cards';
 
-import Colors from '../constants/Colors';
+import Cards from '../assets/fixtures/CardsData.json'
 
 let Card = React.createClass({
-  
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => this.props.navigator.push({name: 'Profile'})}  style={styles.card}>
+        <TouchableOpacity style={styles.card}>
           <Image style={styles.thumbnail} source={{uri: this.props.image}}  />
           <Text style={styles.text}>{this.props.name}</Text>
           <Text style={styles.restaurant}>ABC Restaurant</Text>
-
           <View style={{flexDirection: 'row'}}>
-
             <View style={{flexDirection: 'column'}}>
               <View style={styles.recommend}>
                 <Text style={styles.recommend_text}>1.5K</Text>
                 <Text style={[styles.rec_desc, {marginTop: -30}]}>Recommend</Text>
                 <Text style={styles.rec_desc}>This Card!</Text>
               </View>
-              
             </View>
-
             <Text style={styles.distance}>200M away</Text>
-
           </View>
-          
         </TouchableOpacity>
       </View>
     )
@@ -51,32 +45,6 @@ let NoMoreCards = React.createClass({
     )
   }
 })
-
-const Cards = [
-  {name: 'Wantan Mee', image: 'https://demwvw9lpu8ak.cloudfront.net/attachments/7a060023616d7110399598caa60b016673149de8/store/fill/800/500/7a9fbb97f075b585a6af04216fa305fe140972a9dc53d7a6b2d8f9f17a67/featured_image.jpg'},
-  {name: 'NASI LEMAK', image: 'https://storybookstorage.s3.amazonaws.com/items/images/000/134/326/original/english.jpg'},
-  {name: 'CHEE CHEONG FUN', image: 'http://www.rasamalaysia.com/uploaded_images/cheongfun.jpg'},
-  {name: 'ROTI CANAI', image: 'http://www.templeofthai.com/images/asian-food-life/Malaysia-Roti-Canai-960x640.jpg'},
-  {name: 'CHILLI PAN MEE', image: 'http://www.chillipanmee.com/wp-content/uploads/2010/02/chilli-pan-mee-4.jpg'},
-  {name: 'SUSHI', image: 'http://az616578.vo.msecnd.net/files/2016/05/27/635999646476505798-1665549773_SUSHI%20COVER.jpg'},
-  {name: 'SATAY', image: 'http://www.healthxchange.com.sg/healthyliving/DietandNutrition/PublishingImages/Satay-Not-Just-a-Sinful-Indulgence-Pic.jpg'},
-  {name: 'MEE CURRY', image: 'http://www.halfhourmeals.com/image/recipe/easy-peasy-curry-mee_large.jpg'},
-  {name: 'CHICKEN RICE', image: 'http://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-86.jpg'},
-]
-
-const Cards2 = [
-  {name: '10', image: 'https://media.giphy.com/media/12b3E4U9aSndxC/giphy.gif'},
-  {name: '11', image: 'https://media4.giphy.com/media/6csVEPEmHWhWg/200.gif'},
-  {name: '12', image: 'https://media4.giphy.com/media/AA69fOAMCPa4o/200.gif'},
-  {name: '13', image: 'https://media.giphy.com/media/OVHFny0I7njuU/giphy.gif'},
-]
-
-const Cards3 = [
-  {name: '14', image: 'https://media.giphy.com/media/12b3E4U9aSndxC/giphy.gif'},
-  {name: '15', image: 'https://media4.giphy.com/media/6csVEPEmHWhWg/200.gif'},
-  {name: '16', image: 'https://media4.giphy.com/media/AA69fOAMCPa4o/200.gif'},
-  {name: '17', image: 'https://media.giphy.com/media/OVHFny0I7njuU/giphy.gif'},
-]
 
 export default React.createClass({
   getInitialState() {
