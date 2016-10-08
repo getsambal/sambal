@@ -247,9 +247,7 @@ class SwipeCards extends React.Component {
  	      <TouchableOpacity onPress={this._nopeButton.bind(this)} style={styles.buttonNope}><Text style={styles.buttonTextNope}><FontAwesome name="remove" size={30} color="#fff" /></Text></TouchableOpacity>
 	      <TouchableOpacity onPress={this._yupButton.bind(this)} style={styles.buttonYup}><Text style={styles.buttonTextYup}><FontAwesome name="star" size={30} color="#fff" /></Text></TouchableOpacity>
         <TouchableOpacity 
-          onPress={() => {
-            this.props.navigator.push({name: 'AddFood'})
-          }} 
+          onPress={this.props.addFood} 
           style={styles.buttonShare}
         >
           <Text style={styles.buttonTextShare}><FontAwesome name="plus" size={30} color="#fff" /></Text>

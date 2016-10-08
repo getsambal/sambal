@@ -86,12 +86,16 @@ export default class extends React.Component{
 		this.props.navigator.push(Router.getRoute('cardDetail'));
 	}
 
+  _gotoAddFood = () => {
+    this.props.navigator.push(Router.getRoute('addFood'));
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.container}>
           <SwipeCards
-            navigator={this.props.navigator}
+            addFood={this._gotoAddFood}
             style={styles.flexCenter}
             cards={this.state.cards}
             loop={true}

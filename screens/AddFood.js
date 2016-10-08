@@ -9,7 +9,7 @@ import {
 export default class AddFood extends React.Component {
   static route = {
     navigationBar: {
-      title: 'Card Details',
+      title: 'Add Food',
       visible: true,
     },
   }
