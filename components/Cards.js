@@ -7,12 +7,16 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
+import { 
+  withNavigation 
+} from '@exponent/ex-navigation';
+
+import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import SwipeCards from './swipe-cards';
-
 import Cards from '../assets/fixtures/CardsData.json'
 
-let Card = React.createClass({
+class Card extends React.Component{
   render() {
     return (
       <View style={styles.container}>
@@ -34,9 +38,9 @@ let Card = React.createClass({
       </View>
     )
   }
-})
+}
 
-let NoMoreCards = React.createClass({
+class NoMoreCards extends React.Component{
   render() {
     return (
       <View style={styles.noMoreCards}>
@@ -44,29 +48,30 @@ let NoMoreCards = React.createClass({
       </View>
     )
   }
-})
+}
 
-export default React.createClass({
-  getInitialState() {
-    return {
+export default class extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
       cards: Cards,
       outOfCards: false
     }
-  },
-  handleYup (card) {
+  }
+
+  handleYup = (card) => {
     console.log("yup")
-  },
-  handleNope (card) {
+  }
+
+  handleNope = (card)=> {
     console.log("nope")
-  },
-  cardRemoved (index) {
+  }
+
+  cardRemoved = (index) => {
     console.log(`The index is ${index}`);
-
-    // let CARD_REFRESH_LIMIT = 3
-
+    let CARD_REFRESH_LIMIT = 3
     if (this.state.cards.length - index <= CARD_REFRESH_LIMIT + 1) {
       // console.log(`There are only ${this.state.cards.length - index - 1} cards left.`);
-
       if (!this.state.outOfCards) {
         this.setState({
           cards: this.state.cards,
@@ -74,8 +79,8 @@ export default React.createClass({
       }
 
     }
+  }
 
-  },
   render() {
     return (
       <View style={styles.container}>
@@ -96,7 +101,7 @@ export default React.createClass({
       </View>
     )
   }
-})
+}
 
 const styles = StyleSheet.create({
   card: {
@@ -138,7 +143,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   recommend: {
-    // alignItems: 'center',
     borderRadius: 10,
     borderColor: Colors.primary,
     backgroundColor: Colors.primary,
@@ -162,6 +166,5 @@ const styles = StyleSheet.create({
   rec_desc: {
     paddingLeft: 70, fontSize: 10, color: 'white',
   },
-
 })
 
