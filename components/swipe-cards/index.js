@@ -1,6 +1,3 @@
-/* Gratefully copied from https://github.com/brentvatne/react-native-animated-demo-tinder */
-'use strict';
-
 import React, { Component} from 'react';
 import {
     StyleSheet,

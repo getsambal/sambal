@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-import SwipeCards from './react-native-swipe-cards';
+import SwipeCards from './swipe-cards';
 
 import Colors from '../constants/Colors';
 

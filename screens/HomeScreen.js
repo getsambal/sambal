@@ -9,8 +9,8 @@ import {
 
 // TODO: Change text to Pacifico
 import { MonoText } from '../components/StyledText';
+import Cards from '../components/Cards.js';
 import Layout from '../constants/Layout.js';
-import Tinder from './Cards.js';
 
 export default class HomeScreen extends React.Component {
   static route = {
@@ -23,7 +23,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Tinder style={{flex:1}}/>
+        <Cards style={{flex:1}}/>
       </View>
     );
   }
