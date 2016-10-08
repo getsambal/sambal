@@ -20,7 +20,7 @@ class Card extends React.Component{
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={this.props.gotoCardDetail}>
           <Image style={styles.thumbnail} source={{uri: this.props.image}}  />
           <Text style={styles.text}>{this.props.name}</Text>
           <Text style={styles.restaurant}>ABC Restaurant</Text>
@@ -50,6 +50,7 @@ class NoMoreCards extends React.Component{
   }
 }
 
+@withNavigation
 export default class extends React.Component{
   constructor(props) {
     super(props);
@@ -81,6 +82,10 @@ export default class extends React.Component{
     }
   }
 
+  _gotoCardDetail = () => {
+		this.props.navigator.push(Router.getRoute('cardDetail'));
+	}
+
   render() {
     return (
       <View style={styles.container}>
@@ -90,7 +95,7 @@ export default class extends React.Component{
             style={styles.flexCenter}
             cards={this.state.cards}
             loop={true}
-            renderCard={(cardData) => <Card {...cardData} /> }
+            renderCard={(cardData) => <Card {...cardData} gotoCardDetail={this._gotoCardDetail}/> }
             showYup={true}
             showNope={true}
             handleYup={this.handleYup}

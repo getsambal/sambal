@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React from 'react';
 import {
     StyleSheet,
     Text,
@@ -18,7 +18,7 @@ import Defaults from './Defaults.js';
 
 const SWIPE_THRESHOLD = 120;
 
-class SwipeCards extends Component {
+class SwipeCards extends React.Component {
   constructor(props) {
     super(props);
 

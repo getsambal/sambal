@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Image,
-  Platform,
   StyleSheet,
   Text,
   View,
