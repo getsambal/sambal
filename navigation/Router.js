@@ -5,14 +5,20 @@ import {
 import HomeScreen from '../screens/HomeScreen';
 import CardDetail from '../screens/CardDetail';
 import AddFood from '../screens/AddFood';
+import expand from '../screens/expandedView';
 import RootNavigation from './RootNavigation';
-import MapComponent from '../components/mapComponent';
+import Map from '../components/mapComponent';
+import Desc from '../components/descComponent';
+import Image from '../components/imageComponent';
 
 
 export default createRouter(() => ({
-	map: () => MapComponent,
   home: () => HomeScreen,
   cardDetail: () => CardDetail,
   addFood: () => AddFood,
   rootNavigation: () => RootNavigation,
+  map: () => Map,
+	description: () => Desc,
+	image: () => Image,
+	expand: () => expand,
 }));

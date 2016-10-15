@@ -4,7 +4,6 @@ import { View, Text } from 'react-native';
 import { Components } from 'exponent';
 
 import Layouts from '../constants/Layout';
-
 const Layout = Layouts.window;
 
 export default class mapComponent extends Component{
@@ -14,7 +13,7 @@ export default class mapComponent extends Component{
 		return(
 			<View style={{flex: 1}}>
 				<Components.MapView
-	        style={{margin: 10, height: Layout.height/5}}
+	        style={{height: Layout.height/5, marginTop: 10}}
 	        initialRegion={{
 	          latitude: 37.78825,
 	          longitude: -122.4324,
