@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
     color: Colors.tabIconSelected,
   },
   _titleStyle: {
-    fontSize: 25
+    fontSize: 22
   }
 });
