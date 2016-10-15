@@ -15,6 +15,9 @@ import {
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
+import {
+  Font,
+} from 'exponent';
 
 import Colors from '../constants/Colors';
 import Router from '../navigation/Router';
@@ -30,6 +33,7 @@ export default class RootNavigation extends React.Component {
           navigationBar: {
             backgroundColor: Colors.primary,
             tintColor: '#fff',
+            titleStyle: [styles._titleStyle, Font.style('pacifico')]
           },
         }} 
       />
@@ -55,4 +59,7 @@ const styles = StyleSheet.create({
   selectedTab: {
     color: Colors.tabIconSelected,
   },
+  _titleStyle: {
+    fontSize: 25
+  }
 });

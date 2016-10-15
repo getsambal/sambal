@@ -35,6 +35,7 @@ class AppContainer extends React.Component {
         ],
         fonts: [
           {'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')},
+          {'pacifico': require('./assets/fonts/Pacifico.ttf')},
         ],
       });
     } catch(e) {
