@@ -8,7 +8,6 @@ import AddFood from '../screens/AddFood';
 import RootNavigation from './RootNavigation';
 import MapComponent from '../components/mapComponent';
 
-import HomeScreen from '../screens/FoodDetailsScreen';
 
 export default createRouter(() => ({
 	map: () => MapComponent,
