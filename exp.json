@@ -6,9 +6,9 @@
   "version": "0.1.0",
   "orientation": "portrait",
   "primaryColor": "#f8a551",
-  "iconUrl": "http://i.imgur.com/jyrLVPh.png",
+  "iconUrl": "http://i.imgur.com/UrT5vBL.png",
   "notification": {
-    "iconUrl": "http://i.imgur.com/jyrLVPh.png",
+    "iconUrl": "http://i.imgur.com/UrT5vBL.png",
     "color": "#000000"
   },
   "loading": {
