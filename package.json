@@ -2,15 +2,16 @@
   "name": "sambal-exp",
   "version": "0.0.0",
   "description": "Hello Exponent!",
-  "author": null,
+  "author": "Alpaca Lab",
   "private": true,
   "main": "main.js",
   "dependencies": {
     "@exponent/ex-navigation": "^1.6.0",
-    "@exponent/samples": "^1.0.2",
     "@exponent/vector-icons": "^1.0.1",
     "exponent": "^10.0.0",
     "react": "~15.3.2",
-    "react-native": "github:exponentjs/react-native#sdk-10.1.2"
+    "react-native": "github:exponentjs/react-native#sdk-10.1.2",
+    "react-native-elements": "^0.6.2",
+    "react-native-vector-icons": "github:exponentjs/react-native-vector-icons"
   }
 }
