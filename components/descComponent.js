@@ -14,7 +14,7 @@ export default class descComponent extends Component{
 					<Text style={{fontSize: 16, fontWeight: '500', margin: 5}}>Description</Text>
 					<View style={{height: Layout.height/6, backgroundColor: '#fff'}}>
 						<Text style={{margin: 5, fontSize: 14}}>
-							{desc}
+							{this.props.desc}
 						</Text>
 					</View>
 				</View>
