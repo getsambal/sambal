@@ -27,7 +27,7 @@ export default class RootNavigation extends React.Component {
   render() {
     return (
       <StackNavigation 
-        initialRoute={Router.getRoute('home')}
+        initialRoute={Router.getRoute('expand')}
         defaultRouteConfig={{
           styles: NavigationStyles.SlideHorizontal,
           navigationBar: {
