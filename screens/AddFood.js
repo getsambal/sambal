@@ -79,7 +79,6 @@ export default class AddFood extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 10,
     alignItems: 'center',
     justifyContent: 'space-between'
   },
@@ -87,7 +86,9 @@ const styles = StyleSheet.create({
     width: Layout.window.width - 20,
     marginLeft: -15
   },
-
+  imageContainer: {
+    flexDirection: 'column',
+  },  
   image: {
     width: Layout.window.width,
     height: 300,
@@ -100,7 +101,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     justifyContent: 'center',
     alignSelf: 'flex-end',
-    marginTop: -30
+    marginTop: -30,
+    marginRight: 14
   },
   iconCamera: {
     alignSelf: 'center',
@@ -115,11 +117,11 @@ const styles = StyleSheet.create({
     marginTop: 6
   },
   formLocation: {
-    width: Layout.window.width - 80,
+    width: Layout.window.width - 60,
   },
   submit: {
     margin: 10,
-    width: Layout.window.width - 20,
+    width: Layout.window.width - 30,
     padding: 18,
     backgroundColor: Colors.primary,
     borderRadius: 5,
