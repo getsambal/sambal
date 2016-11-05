@@ -12,6 +12,8 @@
     "react": "~15.3.2",
     "react-native": "github:exponentjs/react-native#sdk-10.1.2",
     "react-native-elements": "^0.6.2",
+    "react-native-floating-label-text-input": "^0.1.0",
+    "react-native-keyboard-aware-scroll-view": "^0.2.1",
     "react-native-vector-icons": "github:exponentjs/react-native-vector-icons"
   }
 }

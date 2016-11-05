@@ -3287,6 +3287,16 @@ react-native-elements:
   dependencies:
     react-native-tab-navigator "^0.3.3"
 
+react-native-floating-label-text-input:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-floating-label-text-input/-/react-native-floating-label-text-input-0.1.0.tgz#49e50ae5a05c3468dd96aeaa5bd63d9c2ca72c0f"
+
+react-native-keyboard-aware-scroll-view:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.2.1.tgz#47c35a57b3c56357213486b0929b4adf2090b7e6"
+  dependencies:
+    react-timer-mixin "^0.13.3"
+
 "react-native-maps@github:exponentjs/react-native-maps#d76517f":
   version "0.8.2"
   resolved "https://codeload.github.com/exponentjs/react-native-maps/tar.gz/d76517f"
