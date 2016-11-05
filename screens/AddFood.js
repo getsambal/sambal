@@ -8,7 +8,8 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
-  Platform
+  Platform,
+  Slider
 } from 'react-native';
 
 import {
@@ -48,7 +49,7 @@ export default class AddFood extends React.Component {
             </TouchableOpacity>
           </Components.LinearGradient>
         </View>
-        <View>
+        <View style={styles.formContainer}>
           <View style={styles.form}>
             <FloatLabelTextInput
               placeholder={"Food Name"}
@@ -61,11 +62,11 @@ export default class AddFood extends React.Component {
               underlineColorAndroid='transparent'
             />
           </View>
-          <View style={styles.form}>
-            <FloatLabelTextInput
-              placeholder={"Price"}
-              underlineColorAndroid='transparent'
-            />
+          <View style={styles.slider}>
+            <Text style={styles.sliderText}>Price Range</Text>
+            <Slider
+              {...this.props}
+              onValueChange={(value) => this.setState({value: value})} />
           </View>
           <View style={styles.locationContainer}>
             <FontAwesome name="location-arrow" size={32} color="grey" style={styles.iconLocation}/>
@@ -122,6 +123,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'transparent',
   },
+  formContainer: {
+    marginBottom: 5,
+  },
+  slider: {
+    marginVertical: 10,
+    marginHorizontal: 2
+  },
+  sliderText: {
+    color: 'grey',
+    marginVertical: 5 
+  },
   locationContainer: {
     flexDirection: 'row',
     width: 100,
@@ -154,6 +166,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 22,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   }
 });
