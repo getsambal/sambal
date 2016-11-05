@@ -4,21 +4,32 @@ import {
   StyleSheet,
   Text,
   View,
+  Dimensions,
+  ScrollView,
+  TouchableOpacity,
+  TextInput
 } from 'react-native';
+
+import { Ionicons } from '@exponent/vector-icons';
+
+import {
+  Font,
+} from 'exponent';
+
 
 export default class AddFood extends React.Component {
   static route = {
     navigationBar: {
       title: 'Add Food',
-      visible: true,
     },
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Add Food</Text>
-      </View>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text></Text>
+        <Text style={Font.style('pacifico')}>Sambal</Text>
+      </ScrollView>
     );
   }
 }
@@ -26,6 +37,5 @@ export default class AddFood extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
+  }
 });
