@@ -6,8 +6,10 @@ import {
   View,
 } from 'react-native';
 
-// TODO: Change text to Pacifico
-import { MonoText } from '../components/StyledText';
+import {
+  Font,
+} from 'exponent';
+
 import Cards from '../components/Cards.js';
 import Layout from '../constants/Layout.js';
 
@@ -15,6 +17,7 @@ export default class HomeScreen extends React.Component {
   static route = {
     navigationBar: {
       title: 'Sambal',
+      titleStyle: [Font.style('pacifico'), {fontSize: 22}],
       visible: true,
     },
   }

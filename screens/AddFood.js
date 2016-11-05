@@ -12,11 +12,6 @@ import {
 
 import { Ionicons } from '@exponent/vector-icons';
 
-import {
-  Font,
-} from 'exponent';
-
-
 export default class AddFood extends React.Component {
   static route = {
     navigationBar: {
@@ -28,7 +23,6 @@ export default class AddFood extends React.Component {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Text></Text>
-        <Text style={Font.style('pacifico')}>Sambal</Text>
       </ScrollView>
     );
   }

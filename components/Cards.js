@@ -115,7 +115,7 @@ export default class extends React.Component{
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    borderRadius: 5,
+    borderRadius: 20,
     overflow: 'hidden',
     backgroundColor: 'white',
     borderWidth: 0,
