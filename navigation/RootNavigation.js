@@ -12,9 +12,14 @@ import {
   TabNavigationItem,
   NavigationStyles
 } from '@exponent/ex-navigation';
+
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
+
+import {
+  Components
+} from 'exponent';
 
 import Colors from '../constants/Colors';
 import Router from '../navigation/Router';
@@ -28,10 +33,18 @@ export default class RootNavigation extends React.Component {
         defaultRouteConfig={{
           styles: NavigationStyles.SlideHorizontal,
           navigationBar: {
-            backgroundColor: Colors.primary,
             tintColor: '#fff',
+            renderBackground: (props) => 
+              <View style={[{width: window.width }]}>
+                <Components.LinearGradient
+                  colors={['#F8964E', '#F8AE50']} 
+                  start={[0.1,0.9]}
+                  style={{position: 'absolute', left: 0, right: 0, top: 0, height: 64 }}
+                />
+              </View>,
           },
-        }} 
+        }}
+        
       />
     );
   }

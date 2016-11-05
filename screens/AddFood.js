@@ -11,12 +11,16 @@ import {
   Platform
 } from 'react-native';
 
-import Layout from '../constants/Layout.js';
-import Colors from '../constants/Colors.js';
+import {
+  Components
+} from 'exponent';
 
 import { FontAwesome } from '@exponent/vector-icons';
 import FloatLabelTextInput from 'react-native-floating-label-text-input';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
+import Layout from '../constants/Layout.js';
+import Colors from '../constants/Colors.js';
 
 export default class AddFood extends React.Component {
   static route = {
@@ -34,10 +38,15 @@ export default class AddFood extends React.Component {
     return (
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{uri: 'https://unsplash.it/500/500'}} />
-          <TouchableOpacity style={styles.camera}>
-            <FontAwesome name="camera" size={32} color="white" style={styles.iconCamera}/>
-          </TouchableOpacity>
+          <Image style={styles.image} source={{uri: 'https://unsplash.it/500/500?image=835'}} />
+          <Components.LinearGradient 
+            colors={['#F8964E', '#F8AE50']} 
+            start={[0.1,0.9]}
+            style={styles.camera}>
+            <TouchableOpacity onPress={this._onPressButton}>
+              <FontAwesome name="camera" size={32} color="white" style={styles.iconCamera}/>
+            </TouchableOpacity>
+          </Components.LinearGradient>
         </View>
         <View>
           <View style={styles.form}>
@@ -54,7 +63,7 @@ export default class AddFood extends React.Component {
           </View>
           <View style={styles.form}>
             <FloatLabelTextInput
-              placeholder={"Comments"}
+              placeholder={"Price"}
               underlineColorAndroid='transparent'
             />
           </View>
@@ -68,9 +77,14 @@ export default class AddFood extends React.Component {
             </View>
           </View>
         </View>
-        <TouchableOpacity style={styles.submit} onPress={this._onPressButton}>
-          <Text style={styles.submitText}>Submit</Text>
-        </TouchableOpacity>
+        <Components.LinearGradient 
+          colors={['#F8964E', '#F8AE50']} 
+          start={[0.1,0.9]}
+          style={styles.submit}>
+          <TouchableOpacity onPress={this._onPressButton}>
+            <Text style={styles.submitText}>Submit</Text>
+          </TouchableOpacity>
+        </Components.LinearGradient>
       </KeyboardAwareScrollView>
     );
   }
@@ -123,7 +137,6 @@ const styles = StyleSheet.create({
     margin: 10,
     width: Layout.window.width - 30,
     padding: 18,
-    backgroundColor: Colors.primary,
     borderRadius: 5,
     ...Platform.select({
       ios: {
@@ -141,5 +154,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 22,
+    backgroundColor: 'transparent'
   }
 });
