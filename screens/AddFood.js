@@ -33,7 +33,12 @@ export default class AddFood extends React.Component {
   render() {
     return (
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-        <Image style={styles.image} source={{uri: 'https://unsplash.it/500/500'}} />
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={{uri: 'https://unsplash.it/500/500'}} />
+          <TouchableOpacity style={styles.camera}>
+            <FontAwesome name="camera" size={32} color="white" style={styles.iconCamera}/>
+          </TouchableOpacity>
+        </View>
         <View>
           <View style={styles.form}>
             <FloatLabelTextInput
@@ -82,10 +87,24 @@ const styles = StyleSheet.create({
     width: Layout.window.width - 20,
     marginLeft: -15
   },
+
   image: {
     width: Layout.window.width,
     height: 300,
     resizeMode: 'cover'
+  },
+  camera: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: Colors.primary,
+    justifyContent: 'center',
+    alignSelf: 'flex-end',
+    marginTop: -30
+  },
+  iconCamera: {
+    alignSelf: 'center',
+    backgroundColor: 'transparent',
   },
   locationContainer: {
     flexDirection: 'row',
