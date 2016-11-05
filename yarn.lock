@@ -1926,11 +1926,6 @@ github-username@^2.0.0:
     gh-got "^2.2.0"
     meow "^3.5.0"
 
-"github:exponentjs/react-native-vector-icons":
-  name react-native-vector-icons
-  version "2.1.0"
-  resolved "https://codeload.github.com/exponentjs/react-native-vector-icons/tar.gz/9a7f4cc4641bf7df86137334e99eb75586f2c6a0"
-
 glob-base@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/glob-base/-/glob-base-0.3.0.tgz#dbb164f6221b1c0b1ccf82aea328b497df0ea3c4"
@@ -3321,6 +3316,10 @@ react-native-vector-icons@2.0.3:
   dependencies:
     lodash "^4.0.0"
     yargs "^4.7.0"
+
+"react-native-vector-icons@github:exponentjs/react-native-vector-icons":
+  version "2.1.0"
+  resolved "https://codeload.github.com/exponentjs/react-native-vector-icons/tar.gz/9a7f4cc4641bf7df86137334e99eb75586f2c6a0"
 
 "react-native@github:exponentjs/react-native#sdk-10.1.2":
   version "0.33.0"
