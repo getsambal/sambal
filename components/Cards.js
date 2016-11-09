@@ -20,25 +20,23 @@ import Cards from '../assets/fixtures/CardsData.json'
 class Card extends React.Component{
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.card} onPress={this.props.gotoCardDetail}>
-          <Image style={styles.thumbnail} source={{uri: this.props.image}}  />
-          <Text style={styles.text}>{this.props.name}</Text>
-          <Text style={styles.restaurant}>Restaurant Z</Text>
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flexDirection: 'column'}}>
-              <View style={styles.recommend}>
-                <Text style={styles.recommend_text}>1.5K</Text>
-                <View>
-                  <Text style={styles.rec_desc}>Recommend</Text>
-                  <Text style={styles.rec_desc}>This Card!</Text>
-                </View>
+      <TouchableOpacity style={styles.card} onPress={this.props.gotoCardDetail}>
+        <Image style={styles.thumbnail} source={{uri: this.props.image}}  />
+        <Text style={styles.text}>{this.props.name}</Text>
+        <Text style={styles.restaurant}>Restaurant Z</Text>
+        <View style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'column'}}>
+            <View style={styles.recommend}>
+              <Text style={styles.recommend_text}>1.5K</Text>
+              <View>
+                <Text style={styles.rec_desc}>Recommend</Text>
+                <Text style={styles.rec_desc}>This Card!</Text>
               </View>
             </View>
-            <Text style={styles.distance}>200M away</Text>
           </View>
-        </TouchableOpacity>
-      </View>
+          <Text style={styles.distance}>200M away</Text>
+        </View>
+      </TouchableOpacity>
     )
   }
 }
@@ -96,20 +94,18 @@ export default class extends React.Component{
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.container}>
-          <SwipeCards
-            addFood={this._gotoAddFood}
-            style={styles.flexCenter}
-            cards={this.state.cards}
-            loop={true}
-            renderCard={(cardData) => <Card {...cardData} gotoCardDetail={this._gotoCardDetail}/> }
-            showYup={true}
-            showNope={true}
-            handleYup={this.handleYup}
-            handleNope={this.handleNope}
-            cardRemoved={this.cardRemoved}
-          />
-        </View>
+        <SwipeCards
+          addFood={this._gotoAddFood}
+          style={styles.flexCenter}
+          cards={this.state.cards}
+          loop={true}
+          renderCard={(cardData) => <Card {...cardData} gotoCardDetail={this._gotoCardDetail}/> }
+          showYup={false}
+          showNope={false}
+          handleYup={this.handleYup}
+          handleNope={this.handleNope}
+          cardRemoved={this.cardRemoved}
+        />
       </View>
     )
   }
@@ -125,11 +121,12 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     elevation: 1,
     paddingBottom: 10,
-    height: height - 200,
+    height: height - 190,
   },
   thumbnail: {
     flex: 1,
-    borderRadius: 5,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
     width: 330,
     height: 350,
   },
