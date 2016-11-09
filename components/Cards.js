@@ -29,8 +29,10 @@ class Card extends React.Component{
             <View style={{flexDirection: 'column'}}>
               <View style={styles.recommend}>
                 <Text style={styles.recommend_text}>1.5K</Text>
-                <Text style={[styles.rec_desc, {marginTop: -30}]}>Recommend</Text>
-                <Text style={styles.rec_desc}>This Card!</Text>
+                <View>
+                  <Text style={styles.rec_desc}>Recommend</Text>
+                  <Text style={styles.rec_desc}>This Card!</Text>
+                </View>
               </View>
             </View>
             <Text style={styles.distance}>200M away</Text>
@@ -157,25 +159,31 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: Colors.primary,
     backgroundColor: Colors.primary,
-    borderWidth: 0,
     height: 40,
     width: 140,
-    marginLeft: 15,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 20,
     marginTop: 5,
   },
   recommend_text: {
     fontSize: 24,
+    fontWeight: 'bold',
     color: 'white',
-    paddingTop: 3,
     marginLeft: 10,
+    backgroundColor: 'transparent',
+  },
+  rec_desc: {
+    fontSize: 10, 
+    color: 'white',
+    backgroundColor: 'transparent',
+    paddingHorizontal: 6,
   },
   distance: {
     paddingTop: 10, paddingLeft: 40,
     fontSize: 20,
     color: '#754b33',
-  },
-  rec_desc: {
-    paddingLeft: 70, fontSize: 10, color: 'white',
   },
 })
 
