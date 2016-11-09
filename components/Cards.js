@@ -1,10 +1,11 @@
 import React from 'react'; 
 import {
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Dimensions
 } from 'react-native';
 
 import { 
@@ -23,7 +24,7 @@ class Card extends React.Component{
         <TouchableOpacity style={styles.card} onPress={this.props.gotoCardDetail}>
           <Image style={styles.thumbnail} source={{uri: this.props.image}}  />
           <Text style={styles.text}>{this.props.name}</Text>
-          <Text style={styles.restaurant}>ABC Restaurant</Text>
+          <Text style={styles.restaurant}>Restaurant Z</Text>
           <View style={{flexDirection: 'row'}}>
             <View style={{flexDirection: 'column'}}>
               <View style={styles.recommend}>
@@ -112,17 +113,18 @@ export default class extends React.Component{
   }
 }
 
+let {height, width} = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
     borderRadius: 20,
     overflow: 'hidden',
     backgroundColor: 'white',
     borderWidth: 0,
     elevation: 1,
     paddingBottom: 10,
+    height: height - 200,
   },
-  
   thumbnail: {
     flex: 1,
     borderRadius: 5,
