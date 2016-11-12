@@ -211,12 +211,8 @@ class SwipeCards extends React.Component {
 
     return (
       <View style={styles.container}>
-        {/* 
-          this is weird ass JSX comments,
-          will re-implement modal style add food 
-          once i have completed it in screen based solution
-        */}
-        {/* <AddFood modalState={this.state.modalVisible} modalVisible={this.setModalVisible} /> */}
+        <Text style={styles.header}>Sambal</Text>
+
         { this.state.card
             ? (
             <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
@@ -288,9 +284,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   card: {
-    top: 20,
+    top: 5,
     alignItems: 'center',
     backgroundColor: 'transparent',
+    zIndex: 10,
   },
   yup: {
     borderColor: '#4CAF50',
@@ -326,11 +323,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: 90 * vw,
     height: 10 * vh,
+    marginTop: 50,
     marginLeft: 5 * vmin,
     marginRight: 8 * vmin,
     justifyContent: 'space-around',
-    position: 'absolute',
-    bottom: 4 * vh,
+    bottom: 5 * vh,
   },
   buttonBack: {
     width: 21 * vw,
@@ -397,7 +394,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: 'white',
-
+  },
+  header: {
+    fontFamily: 'pacifico',
+    color: 'white',
+    fontSize: 32,
+    paddingHorizontal: 20,
+    alignSelf: 'flex-start'
   }
 });
 

@@ -5,7 +5,8 @@ import {
   View,
   Image,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Platform
 } from 'react-native';
 
 import { 
@@ -93,20 +94,18 @@ export default class extends React.Component{
 
   render() {
     return (
-      <View style={styles.container}>
-        <SwipeCards
-          addFood={this._gotoAddFood}
-          style={styles.flexCenter}
-          cards={this.state.cards}
-          loop={true}
-          renderCard={(cardData) => <Card {...cardData} gotoCardDetail={this._gotoCardDetail}/> }
-          showYup={false}
-          showNope={false}
-          handleYup={this.handleYup}
-          handleNope={this.handleNope}
-          cardRemoved={this.cardRemoved}
-        />
-      </View>
+      <SwipeCards
+        addFood={this._gotoAddFood}
+        style={styles.swipeCard}
+        cards={this.state.cards}
+        loop={true}
+        renderCard={(cardData) => <Card {...cardData} gotoCardDetail={this._gotoCardDetail}/> }
+        showYup={false}
+        showNope={false}
+        handleYup={this.handleYup}
+        handleNope={this.handleNope}
+        cardRemoved={this.cardRemoved}
+      />
     )
   }
 }
@@ -114,19 +113,22 @@ export default class extends React.Component{
 let {height, width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
+  swipeCard: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   card: {
     borderRadius: 20,
     overflow: 'hidden',
     backgroundColor: 'white',
     borderWidth: 0,
-    elevation: 1,
     paddingBottom: 10,
     height: height - 190,
   },
   thumbnail: {
     flex: 1,
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     width: 330,
     height: 350,
   },
@@ -143,15 +145,7 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     marginLeft: 20,
   },
-  flexCenter: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    flex: 1,
-    backgroundColor: Colors.primary,
-  },
+
   recommend: {
     borderRadius: 10,
     borderColor: Colors.primary,
