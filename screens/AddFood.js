@@ -39,7 +39,7 @@ export default class AddFood extends React.Component {
     return (
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{uri: 'https://unsplash.it/500/500?image=835'}} />
+          <Image style={styles.image} source={{uri: 'https://storybookstorage.s3.amazonaws.com/items/images/000/134/326/original/english.jpg'}} />
           <Components.LinearGradient 
             colors={['#F8964E', '#F8AE50']} 
             style={styles.camera}>
@@ -91,9 +91,7 @@ export default class AddFood extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between'
   },
   form: {
     width: Layout.window.width - 20,
@@ -126,7 +124,13 @@ const styles = StyleSheet.create({
   },
   slider: {
     marginVertical: 10,
-    marginHorizontal: 2
+    ...Platform.select({
+      ios: {
+        marginHorizontal: 2
+      },
+      android: {
+      },
+    }),
   },
   sliderText: {
     color: 'grey',
