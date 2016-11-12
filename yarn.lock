@@ -3351,6 +3351,10 @@ react-native-keyboard-aware-scroll-view:
   version "0.11.0"
   resolved "git+https://github.com/exponentjs/react-native-maps#12853f0"
 
+react-native-popup-dialog:
+  version "0.3.14"
+  resolved "https://registry.yarnpkg.com/react-native-popup-dialog/-/react-native-popup-dialog-0.3.14.tgz#ec8a2f2b5f54c252496e6b28bc468f1f0856e767"
+
 "react-native-svg@git+https://github.com/exponentjs/react-native-svg#afadb19":
   version "4.2.1"
   resolved "git+https://github.com/exponentjs/react-native-svg#afadb19"

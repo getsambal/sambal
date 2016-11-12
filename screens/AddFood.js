@@ -19,6 +19,8 @@ import {
 import { FontAwesome } from '@exponent/vector-icons';
 import FloatLabelTextInput from 'react-native-floating-label-text-input';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import PopupDialog, { DialogTitle, SlideAnimation }  from 'react-native-popup-dialog';
+
 
 import Layout from '../constants/Layout.js';
 import Colors from '../constants/Colors.js';
@@ -43,7 +45,10 @@ export default class AddFood extends React.Component {
           <Components.LinearGradient 
             colors={['#F8964E', '#F8AE50']} 
             style={styles.camera}>
-            <TouchableOpacity onPress={this._onPressButton}>
+            <TouchableOpacity 
+              onPress={() => {
+              this.popupDialog.openDialog();
+            }}>
               <FontAwesome name="camera" size={32} color="white" style={styles.iconCamera}/>
             </TouchableOpacity>
           </Components.LinearGradient>
@@ -84,6 +89,16 @@ export default class AddFood extends React.Component {
             <Text style={styles.submitText}>Submit</Text>
           </TouchableOpacity>
         </Components.LinearGradient>
+
+        <PopupDialog
+          dialogTitle={<DialogTitle title="Pick Picture" />}
+          ref={(popupDialog) => { this.popupDialog = popupDialog; } }
+          dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom' }) }
+          >
+          <View>
+            <Text>Hello</Text>
+          </View>
+        </PopupDialog>
       </KeyboardAwareScrollView>
     );
   }
