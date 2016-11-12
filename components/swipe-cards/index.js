@@ -400,6 +400,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 32,
     paddingHorizontal: 20,
+    width: 200,
     alignSelf: 'flex-start'
   }
 });
