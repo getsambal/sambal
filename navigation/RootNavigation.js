@@ -5,6 +5,7 @@ import {
   DeviceEventEmitter,
   StyleSheet,
   View,
+  Platform
 } from 'react-native';
 import {
   StackNavigation,
@@ -38,8 +39,7 @@ export default class RootNavigation extends React.Component {
               <View style={[{width: window.width }]}>
                 <Components.LinearGradient
                   colors={['#F8964E', '#F8AE50']} 
-                  start={[0.1,0.9]}
-                  style={{position: 'absolute', left: 0, right: 0, top: 0, height: 64 }}
+                  style={styles.navbar}
                 />
               </View>,
           },
@@ -61,6 +61,21 @@ export default class RootNavigation extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  navbar: {
+    position: 'absolute', 
+    left: 0, 
+    right: 0, 
+    top: 0, 
+    height: 64,
+    ...Platform.select({
+      ios: {
+        height: 64,
+      },
+      android: {
+        height: 96,
+      },
+    }),
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

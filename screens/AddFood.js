@@ -42,7 +42,6 @@ export default class AddFood extends React.Component {
           <Image style={styles.image} source={{uri: 'https://unsplash.it/500/500?image=835'}} />
           <Components.LinearGradient 
             colors={['#F8964E', '#F8AE50']} 
-            start={[0.1,0.9]}
             style={styles.camera}>
             <TouchableOpacity onPress={this._onPressButton}>
               <FontAwesome name="camera" size={32} color="white" style={styles.iconCamera}/>
@@ -80,7 +79,6 @@ export default class AddFood extends React.Component {
         </View>
         <Components.LinearGradient 
           colors={['#F8964E', '#F8AE50']} 
-          start={[0.1,0.9]}
           style={styles.submit}>
           <TouchableOpacity onPress={this._onPressButton}>
             <Text style={styles.submitText}>Submit</Text>

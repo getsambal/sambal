@@ -8,6 +8,7 @@ import {
 
 import {
   Font,
+  Components
 } from 'exponent';
 
 import Cards from '../components/Cards.js';
