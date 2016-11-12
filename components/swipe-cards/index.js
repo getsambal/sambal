@@ -11,7 +11,7 @@ import {
     Modal
 } from 'react-native';
 
-import { FontAwesome } from '@exponent/vector-icons';
+import { FontAwesome, Ionicons, MaterialIcons } from '@exponent/vector-icons';
 
 import clamp from 'clamp';
 import Defaults from './Defaults.js';
@@ -211,7 +211,17 @@ class SwipeCards extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>Sambal</Text>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Sambal</Text>
+          <View style={styles.headerButtons}>
+            <TouchableOpacity>
+              <MaterialIcons name="refresh" size={40} color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <MaterialIcons name="more-vert" size={40} color="white" />
+            </TouchableOpacity>
+          </View>
+        </View>
 
         { this.state.card
             ? (
@@ -282,6 +292,23 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: 'transparent',
+  },
+  header: {
+    flex: 0,
+    width: width - 40,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  headerText: {
+    fontFamily: 'pacifico',
+    color: 'white',
+    fontSize: 32,
+    width: 200,
+  },
+  headerButtons: {
+    flexDirection: 'row',
+    marginRight: -10,
   },
   card: {
     top: 5,
@@ -395,14 +422,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
-  header: {
-    fontFamily: 'pacifico',
-    color: 'white',
-    fontSize: 32,
-    paddingHorizontal: 20,
-    width: 200,
-    alignSelf: 'flex-start'
-  }
+
 });
 
 export default SwipeCards
