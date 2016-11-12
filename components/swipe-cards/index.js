@@ -255,14 +255,12 @@ class SwipeCards extends React.Component {
           : null }
         <View style={styles.buttonFooterContainer}>
 
-          <Components.LinearGradient
-            colors={['#F8964E', '#F8AE50']}
-            style={[styles.buttons, styles.buttonBack]}>
-            <TouchableOpacity
-              onPress={this._backButton.bind(this)}>
-              <FontAwesome name="angle-left" size={40} color="#fff" />
-            </TouchableOpacity>
-          </Components.LinearGradient>
+
+          <TouchableOpacity
+            style={[styles.buttons, styles.buttonBack]}
+            onPress={this._backButton.bind(this)}>
+            <FontAwesome name="angle-left" size={40} color="#fff" />
+          </TouchableOpacity>
 
           <TouchableOpacity
             onPress={this.props.addFood}
@@ -270,14 +268,12 @@ class SwipeCards extends React.Component {
             <Entypo name="plus" size={40} color="#FE8730" />
           </TouchableOpacity>
 
-          <Components.LinearGradient
-            colors={['#F8964E', '#F8AE50']}
-            style={[styles.buttons, styles.buttonYup]}>
-            <TouchableOpacity
-              onPress={this._yupButton.bind(this)}>
-              <FontAwesome name="angle-right" size={40} color="#fff" />
-            </TouchableOpacity>
-          </Components.LinearGradient>
+
+          <TouchableOpacity
+            style={[styles.buttons, styles.buttonYup]}
+            onPress={this._yupButton.bind(this)}>
+            <FontAwesome name="angle-right" size={40} color="#fff" />
+          </TouchableOpacity>
 
         </View>
       </View>
@@ -384,6 +380,7 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#F8AE50',
     ...Platform.select({
       ios: {
         shadowColor: 'black',
