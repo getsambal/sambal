@@ -21,9 +21,10 @@ import FloatLabelTextInput from 'react-native-floating-label-text-input';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PopupDialog, { DialogTitle, SlideAnimation }  from 'react-native-popup-dialog';
 
-
 import Layout from '../constants/Layout.js';
 import Colors from '../constants/Colors.js';
+
+const slideAnimation = new SlideAnimation({ slideFrom: 'bottom' });
 
 export default class AddFood extends React.Component {
   static route = {
@@ -93,7 +94,7 @@ export default class AddFood extends React.Component {
         <PopupDialog
           dialogTitle={<DialogTitle title="Pick Picture" />}
           ref={(popupDialog) => { this.popupDialog = popupDialog; } }
-          dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom' }) }
+          dialogAnimation = { slideAnimation }
           >
           <View>
             <Text>Hello</Text>

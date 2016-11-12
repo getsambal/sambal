@@ -9,6 +9,10 @@ import {
   Platform
 } from 'react-native';
 
+import {
+  Components
+} from 'exponent';
+
 import { 
   withNavigation 
 } from '@exponent/ex-navigation';
@@ -25,18 +29,22 @@ class Card extends React.Component{
         <Image style={styles.thumbnail} source={{uri: this.props.image}}  />
         <Text style={styles.text}>{this.props.name}</Text>
         <Text style={styles.restaurant}>Restaurant Z</Text>
+
         <View style={{flexDirection: 'row'}}>
           <View style={{flexDirection: 'column'}}>
-            <View style={styles.recommend}>
+            <Components.LinearGradient 
+              colors={['#F8964E', '#F8AE50']}  
+              style={styles.recommend}>
               <Text style={styles.recommend_text}>1.5K</Text>
               <View>
                 <Text style={styles.rec_desc}>Recommend</Text>
                 <Text style={styles.rec_desc}>This Card!</Text>
               </View>
-            </View>
+            </Components.LinearGradient>
           </View>
           <Text style={styles.distance}>200M away</Text>
         </View>
+        
       </TouchableOpacity>
     )
   }
