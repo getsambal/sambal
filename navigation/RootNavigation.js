@@ -32,7 +32,7 @@ export default class RootNavigation extends React.Component {
       <StackNavigation 
         initialRoute={Router.getRoute('home')}
         defaultRouteConfig={{
-          styles: NavigationStyles.SlideHorizontal,
+          styles: NavigationStyles.Fade,
           navigationBar: {
             tintColor: '#fff',
             renderBackground: (props) => 
