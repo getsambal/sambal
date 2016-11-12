@@ -259,7 +259,7 @@ class SwipeCards extends React.Component {
           <TouchableOpacity
             style={[styles.buttons, styles.buttonBack]}
             onPress={this._backButton.bind(this)}>
-            <FontAwesome name="angle-left" size={40} color="#fff" />
+            <FontAwesome style={{marginLeft: -3, marginTop: -4}} name="angle-left" size={40} color="#fff" />
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -272,7 +272,7 @@ class SwipeCards extends React.Component {
           <TouchableOpacity
             style={[styles.buttons, styles.buttonYup]}
             onPress={this._yupButton.bind(this)}>
-            <FontAwesome name="angle-right" size={40} color="#fff" />
+            <FontAwesome style={{marginRight: -3, marginTop: -4}} name="angle-right" size={40} color="#fff" />
           </TouchableOpacity>
 
         </View>
@@ -389,7 +389,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
       },
       android: {
-        elevation: 2,
+        elevation: 1,
       },
     }),
   },
@@ -404,9 +404,6 @@ const styles = StyleSheet.create({
   buttonYup: {
 
   },
-
-
-
 });
 
 export default SwipeCards
