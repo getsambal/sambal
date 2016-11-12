@@ -204,7 +204,7 @@ class SwipeCards extends React.Component {
     let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.5, 1, 0.5]});
     let scale = enter;
 
-    let animatedCardstyles = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
+    let animatedCardstyles = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
 
     let yupOpacity = pan.x.interpolate({inputRange: [0, 150], outputRange: [0, 1]});
     let yupScale = pan.x.interpolate({inputRange: [0, 150], outputRange: [0.5, 1], extrapolate: 'clamp'});

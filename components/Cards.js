@@ -138,7 +138,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     width: 330,
-    height: 350,
+    height: height-350,
+    resizeMode: 'cover'
   },
   text: {
     fontSize: 26,
