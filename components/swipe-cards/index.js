@@ -8,10 +8,15 @@ import {
     Image,
     TouchableOpacity,
     Dimensions,
-    Modal
+    Modal,
+    Platform
 } from 'react-native';
 
-import { FontAwesome, Ionicons, MaterialIcons } from '@exponent/vector-icons';
+import {
+  Components
+} from 'exponent';
+
+import { FontAwesome, Ionicons, MaterialIcons, Entypo } from '@exponent/vector-icons';
 
 import clamp from 'clamp';
 import Defaults from './Defaults.js';
@@ -248,17 +253,33 @@ class SwipeCards extends React.Component {
             </Animated.View>
           )
           : null }
-      <View style={styles.buttonFooterContainer}>
-	      <TouchableOpacity onPress={this._backButton.bind(this)} style={styles.buttonBack}><Text style={styles.buttonTextBack}><FontAwesome name="undo" size={30} color="#fff" /></Text></TouchableOpacity>
- 	      <TouchableOpacity onPress={this._nopeButton.bind(this)} style={styles.buttonNope}><Text style={styles.buttonTextNope}><FontAwesome name="remove" size={30} color="#fff" /></Text></TouchableOpacity>
-	      <TouchableOpacity onPress={this._yupButton.bind(this)} style={styles.buttonYup}><Text style={styles.buttonTextYup}><FontAwesome name="star" size={30} color="#fff" /></Text></TouchableOpacity>
-        <TouchableOpacity 
-          onPress={this.props.addFood} 
-          style={styles.buttonShare}
-        >
-          <Text style={styles.buttonTextShare}><FontAwesome name="plus" size={30} color="#fff" /></Text>
-        </TouchableOpacity>
-	    </View>
+        <View style={styles.buttonFooterContainer}>
+
+          <Components.LinearGradient
+            colors={['#F8964E', '#F8AE50']}
+            style={[styles.buttons, styles.buttonBack]}>
+            <TouchableOpacity
+              onPress={this._backButton.bind(this)}>
+              <FontAwesome name="angle-left" size={40} color="#fff" />
+            </TouchableOpacity>
+          </Components.LinearGradient>
+
+          <TouchableOpacity
+            onPress={this.props.addFood}
+            style={[styles.buttons, styles.buttonAdd]}>
+            <Entypo name="plus" size={40} color="#FE8730" />
+          </TouchableOpacity>
+
+          <Components.LinearGradient
+            colors={['#F8964E', '#F8AE50']}
+            style={[styles.buttons, styles.buttonYup]}>
+            <TouchableOpacity
+              onPress={this._yupButton.bind(this)}>
+              <FontAwesome name="angle-right" size={40} color="#fff" />
+            </TouchableOpacity>
+          </Components.LinearGradient>
+
+        </View>
       </View>
     );
   }
@@ -347,81 +368,47 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   buttonFooterContainer: {
+    flex: 0,
+    width: width - 40,
     flexDirection: 'row',
-    width: 90 * vw,
-    height: 10 * vh,
-    marginTop: 50,
-    marginLeft: 5 * vmin,
-    marginRight: 8 * vmin,
+    marginTop: 20,
+    marginBottom: 20,
     justifyContent: 'space-around',
-    bottom: 5 * vh,
+    paddingHorizontal: 30
+  },
+  buttons: {
+    width: 70,
+    height: 70,
+    borderWidth: 1,
+    borderRadius: 35,
+    borderColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {height: 0},
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
   },
   buttonBack: {
-    width: 21 * vw,
-    height: 12 * vh,
-    borderWidth: 2.3 * vmin,
-    borderRadius: 10 * vmin,
-    borderColor: 'white',
-    // backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 25,
-    marginTop: 5,
+    
   },
-  buttonTextBack: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'black',
+  buttonAdd: {
+    borderWidth: 0,
+    backgroundColor: 'white',
+
   },
   buttonYup: {
-    width: 21 * vw,
-    height: 12 * vh,
-    borderWidth: 2.3 * vmin,
-    borderRadius: 10 * vmin,
-    borderColor: 'white',
-    // backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 5,
+
   },
-  buttonTextYup: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  buttonNope: {
-    width: 21 * vw,
-    height: 12 * vh,
-    borderWidth: 2.3 * vmin,
-    borderRadius: 10 * vmin,
-    borderColor: 'white',
-    // backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 5,
-  },
-  buttonTextNope: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  buttonShare: {
-    width: 21 * vw,
-    height: 12 * vh,
-    borderWidth: 2.3 * vmin,
-    borderRadius: 10 * vmin,
-    borderColor: 'white',
-    // backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 25,
-    marginTop: 5,
-  },
-  buttonTextShare: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white',
-  },
+
+
 
 });
 
