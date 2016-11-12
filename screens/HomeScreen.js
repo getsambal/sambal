@@ -26,9 +26,11 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}> 
+      <Components.LinearGradient 
+        colors={['#F8964E', '#F8AE50']}
+        style={styles.container}>
         <Cards/>
-      </View>
+      </Components.LinearGradient>
     );
   }
 }
