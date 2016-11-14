@@ -330,8 +330,19 @@ const styles = StyleSheet.create({
   card: {
     top: 5,
     alignItems: 'center',
+    zIndex: 2,
     backgroundColor: 'transparent',
-    zIndex: 10,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {height: 0},
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
   yup: {
     borderColor: '#4CAF50',
