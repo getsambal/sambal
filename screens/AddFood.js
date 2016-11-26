@@ -100,8 +100,7 @@ export default class AddFood extends React.Component {
       let x = response;
       x = JSON.parse(x._bodyText);
       console.log(x.data.link);
-      this._changeState({answer: x.data.link});
-      this.setState({animating: false});
+      this.setState({animating: false, photoLink: x.data.link});
     }).catch(err => {
       // console.log(err)
     });
@@ -122,6 +121,7 @@ export default class AddFood extends React.Component {
     return (
       <View>
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+          <Debug state={this.state}/>
           <View style={styles.imageContainer}>
             {this.renderImage(this.state.photoType)}
             <Components.LinearGradient
