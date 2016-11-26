@@ -52,8 +52,8 @@ export default class AddFood extends React.Component {
 		.then(photo => {
 			if (!photo.cancelled) {
 				this.setState({ photo: photo.uri });
-				// this.uploadToImgur(photo.uri);
-				this.props.upload(photo.uri);
+        this.popupDialog.closeDialog();
+				// this.props.upload(photo.uri);
 			} else {
 				null
 			}
@@ -66,8 +66,8 @@ export default class AddFood extends React.Component {
 		.then(photo => {
 			if (!photo.cancelled) {
 				this.setState({ photo: photo.uri });
-				// this.uploadToImgur(photo.uri);
-				this.props.upload(photo.uri);
+        this.popupDialog.closeDialog();
+				// this.props.upload(photo.uri);
 			} else {
 				null
 			}
@@ -81,7 +81,7 @@ export default class AddFood extends React.Component {
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
           <Debug state={this.state} />
           <View style={styles.imageContainer}>
-            <Image style={styles.image} source={{ uri: 'https://storybookstorage.s3.amazonaws.com/items/images/000/134/326/original/english.jpg' }} />
+            <Image style={styles.image} source={{ uri: this.state.photo }} />
             <Components.LinearGradient
               colors={['#F8964E', '#F8AE50']}
               style={styles.camera}>
@@ -138,7 +138,7 @@ export default class AddFood extends React.Component {
           width={300}
           height={200}
           dialogStyle={styles.shadow}
-          haveOverlay={false}
+          haveOverlay={true}
           dialogTitle={<DialogTitle title="Pick Picture" />}
           ref={(popupDialog) => { this.popupDialog = popupDialog; } }
           dialogAnimation={slideAnimation}
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   shadow: {
     borderWidth: StyleSheet.hairline,
 		borderColor: '#F5F5F5',
-    marginTop: -50,
+    marginTop: -80,
     ...Platform.select({
       ios: {
         shadowColor: 'black',
