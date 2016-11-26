@@ -42,7 +42,7 @@ export default class AddFood extends React.Component {
     this.state = {
       price: 0,
       animating: false,
-      photo: "require('./assets/images/exponent-wordmark.png'),"
+      photo: require('../assets/images/placeholder.png')
     };
   };
 
@@ -54,7 +54,7 @@ export default class AddFood extends React.Component {
 		let result = await ImagePicker.launchCameraAsync({})
 		.then(photo => {
 			if (!photo.cancelled) {
-				this.setState({ photo: "uri: " + photo.uri });
+				this.setState({ photo: photo.uri, photoType: 'uri'});
         this.popupDialog.closeDialog();
 				this.uploadToImgur(photo.uri);
 			} else {
@@ -68,7 +68,7 @@ export default class AddFood extends React.Component {
 		let result = await ImagePicker.launchImageLibraryAsync({})
 		.then(photo => {
 			if (!photo.cancelled) {
-				this.setState({ photo: "uri: " + photo.uri });
+				this.setState({ photo: photo.uri, photoType: 'uri' });
         this.popupDialog.closeDialog();
 				this.uploadToImgur(photo.uri);
 			} else {
@@ -107,18 +107,23 @@ export default class AddFood extends React.Component {
     });
   }
 
+  renderImage = (type) => {
+    if(type == 'uri') 
+      return (
+        <Image style={styles.image} source={{uri: this.state.photo}} />
+      )
+    else 
+      return (
+        <Image style={styles.image} source={this.state.photo} />
+      )
+  }
+
   render() {
     return (
       <View>
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-          <Debug state={this.state} />
           <View style={styles.imageContainer}>
-            <ActivityIndicator
-              animating={this.state.animating}
-              style={[styles.centering, {height: 80}]}
-              size="large"
-            />
-            <Image style={styles.image} source={this.state.photo} />
+            {this.renderImage(this.state.photoType)}
             <Components.LinearGradient
               colors={['#F8964E', '#F8AE50']}
               style={styles.camera}>
@@ -176,18 +181,20 @@ export default class AddFood extends React.Component {
           height={200}
           dialogStyle={styles.shadow}
           haveOverlay={true}
-          dialogTitle={<DialogTitle title="Pick Picture" />}
+          dialogTitle={<DialogTitle title="Select Picture" />}
           ref={(popupDialog) => { this.popupDialog = popupDialog; } }
           dialogAnimation={slideAnimation}
           >
-          <View>
-            <TouchableOpacity onPress={this.openCamera}>
-              <Text>Capture Image</Text>
+          <View style={styles.modalContainer}>
+            <TouchableOpacity
+              style={styles.modalTextContainer}
+              onPress={this.openCamera}>
+              <Text style={styles.modalText}>Capture Image</Text>
             </TouchableOpacity>
-          </View>
-          <View>
-            <TouchableOpacity onPress={this.openGallery}>
-              <Text>Photo Gallery</Text>
+            <TouchableOpacity
+              style={styles.modalTextContainer}
+              onPress={this.openGallery}>
+              <Text style={styles.modalText}>Photo Gallery</Text>
             </TouchableOpacity>
           </View>
         </PopupDialog>
@@ -297,5 +304,19 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 22,
     backgroundColor: 'transparent',
+  },
+  modalContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalTextContainer: {
+    flex: 1,
+    width: 300,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalText: {
+    fontSize: 15,
   }
 });
