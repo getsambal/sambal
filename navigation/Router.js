@@ -3,7 +3,6 @@ import {
 } from '@exponent/ex-navigation';
 
 import HomeScreen from '../screens/HomeScreen';
-import CardDetail from '../screens/CardDetail';
 import AddFood from '../screens/AddFood';
 import expand from '../screens/expandedView';
 import RootNavigation from './RootNavigation';
@@ -14,7 +13,6 @@ import Image from '../components/imageComponent';
 
 export default createRouter(() => ({
   home: () => HomeScreen,
-  cardDetail: () => CardDetail,
   addFood: () => AddFood,
   rootNavigation: () => RootNavigation,
   map: () => Map,
