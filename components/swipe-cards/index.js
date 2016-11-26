@@ -184,17 +184,6 @@ class SwipeCards extends React.Component {
     }).start(this._resetState.bind(this));
   }
 
-//Share button
-  _shareButton() {
-    // this.props.handleLeft(this.state.card);
-    // this.props.cardRemoved
-    //   ? this.props.cardRemoved(this.props.cards.indexOf(this.state.card))
-    //   : null;
-    // Animated.timing(this.state.pan, {
-    //   toValue: {x: -1000, y: 0},
-    // }).start(this._resetState.bind(this));
-  }
-
   render() {
     let { pan, enter, } = this.state;
 

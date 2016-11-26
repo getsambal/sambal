@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   TextInput,
   Platform,
-  Slider
+  Slider,
+  ActivityIndicator 
 } from 'react-native';
 
 import {
@@ -40,6 +41,7 @@ export default class AddFood extends React.Component {
     super(props);
     this.state = {
       price: 0,
+      animating: false
     };
   };
 
@@ -53,7 +55,7 @@ export default class AddFood extends React.Component {
 			if (!photo.cancelled) {
 				this.setState({ photo: photo.uri });
         this.popupDialog.closeDialog();
-				// this.props.upload(photo.uri);
+				this.uploadToImgur(photo.uri);
 			} else {
 				null
 			}
@@ -67,7 +69,7 @@ export default class AddFood extends React.Component {
 			if (!photo.cancelled) {
 				this.setState({ photo: photo.uri });
         this.popupDialog.closeDialog();
-				// this.props.upload(photo.uri);
+				this.uploadToImgur(photo.uri);
 			} else {
 				null
 			}
@@ -75,12 +77,45 @@ export default class AddFood extends React.Component {
 		.catch(error => alert(error.message));
 	}
 
+  uploadToImgur = async (photo) => {
+    this.setState({animating: true});
+
+    const formData = new FormData();
+    formData.append('image', {
+      uri: photo,
+      type: 'image/jpeg',
+    });
+
+    let response = await fetch('https://api.imgur.com/3/image',{
+      method: 'post',
+      headers: {
+        'Authorization': 'Client-ID f0f6fe6cfc4142a',
+        'Content-Type': 'multipart/form-data',
+      },
+      body: formData
+    }).then(response => {
+      let responseJson = response.json();
+      let x = response;
+      x = JSON.parse(x._bodyText);
+      console.log(x.data.link);
+      this._changeState({answer: x.data.link});
+      this.setState({animating: false});
+    }).catch(err => {
+      // console.log(err)
+    });
+  }
+
   render() {
     return (
       <View>
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
           <Debug state={this.state} />
           <View style={styles.imageContainer}>
+            <ActivityIndicator
+              animating={this.state.animating}
+              style={[styles.centering, {height: 80}]}
+              size="large"
+            />
             <Image style={styles.image} source={{ uri: this.state.photo }} />
             <Components.LinearGradient
               colors={['#F8964E', '#F8AE50']}
@@ -160,6 +195,11 @@ export default class AddFood extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  centering: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
+  },
   shadow: {
     borderWidth: StyleSheet.hairline,
 		borderColor: '#F5F5F5',

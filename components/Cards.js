@@ -93,7 +93,7 @@ export default class extends React.Component{
   }
 
   _gotoCardDetail = () => {
-		this.props.navigator.push(Router.getRoute('cardDetail'));
+		this.props.navigator.push(Router.getRoute('expand'));
 	}
 
   _gotoAddFood = () => {
