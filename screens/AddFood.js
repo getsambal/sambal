@@ -13,7 +13,8 @@ import {
 } from 'react-native';
 
 import {
-  Components
+  Components,
+  ImagePicker,
 } from 'exponent';
 
 import { FontAwesome } from '@exponent/vector-icons';
@@ -37,85 +38,144 @@ export default class AddFood extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      price: 0,
+    };
   };
 
   changeValue = (key, data) => {
     this.setState({[key]: data});
   }
 
+  openCamera = async () => {
+		let result = await ImagePicker.launchCameraAsync({})
+		.then(photo => {
+			if (!photo.cancelled) {
+				this.setState({ photo: photo.uri });
+				// this.uploadToImgur(photo.uri);
+				this.props.upload(photo.uri);
+			} else {
+				null
+			}
+		})
+		.catch(error => alert(error.message));
+	}
+
+	openGallery = async () => {
+		let result = await ImagePicker.launchImageLibraryAsync({})
+		.then(photo => {
+			if (!photo.cancelled) {
+				this.setState({ photo: photo.uri });
+				// this.uploadToImgur(photo.uri);
+				this.props.upload(photo.uri);
+			} else {
+				null
+			}
+		})
+		.catch(error => alert(error.message));
+	}
+
   render() {
     return (
-      <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-        <Debug state={this.state}/>
-        <View style={styles.imageContainer}>
-          <Image style={styles.image} source={{uri: 'https://storybookstorage.s3.amazonaws.com/items/images/000/134/326/original/english.jpg'}} />
-          <Components.LinearGradient 
-            colors={['#F8964E', '#F8AE50']} 
-            style={styles.camera}>
-            <TouchableOpacity 
-              onPress={() => {
-              this.popupDialog.openDialog();
-            }}>
-              <FontAwesome name="camera" size={32} color="white" style={styles.iconCamera}/>
-            </TouchableOpacity>
-          </Components.LinearGradient>
-        </View>
-        <View style={styles.formContainer}>
-          <View style={styles.form}>
-            <FloatLabelTextInput
-              placeholder={"Food Name"}
-              underlineColorAndroid='transparent'
-              onChangeTextValue={(e)=>this.changeValue('foodName', e)}
-            />
+      <View>
+        <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+          <Debug state={this.state} />
+          <View style={styles.imageContainer}>
+            <Image style={styles.image} source={{ uri: 'https://storybookstorage.s3.amazonaws.com/items/images/000/134/326/original/english.jpg' }} />
+            <Components.LinearGradient
+              colors={['#F8964E', '#F8AE50']}
+              style={styles.camera}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.popupDialog.openDialog();
+                } }>
+                <FontAwesome name="camera" size={32} color="white" style={styles.iconCamera} />
+              </TouchableOpacity>
+            </Components.LinearGradient>
           </View>
-          <View style={styles.form}>
-            <FloatLabelTextInput
-              placeholder={"Restaurant Name"}
-              underlineColorAndroid='transparent'
-              onChangeTextValue={(e)=>this.changeValue('restaurantName', e)}
-            />
-          </View>
-          <View style={styles.slider}>
-            <Text style={styles.sliderText}>Price Range</Text>
-            <Slider
-              {...this.props}
-              onValueChange={(e)=>this.changeValue('price', e)} />
-          </View>
-          <View style={styles.locationContainer}>
-            <FontAwesome name="location-arrow" size={32} color="grey" style={styles.iconLocation}/>
-            <View style={styles.formLocation}>
+          <View style={styles.formContainer}>
+            <View style={styles.form}>
               <FloatLabelTextInput
-                placeholder={"Location"}
+                placeholder={"Food Name"}
                 underlineColorAndroid='transparent'
-                onChangeTextValue={(e)=>this.changeValue('location', e)}
-              />
+                onChangeTextValue={(e) => this.changeValue('foodName', e)}
+                />
+            </View>
+            <View style={styles.form}>
+              <FloatLabelTextInput
+                placeholder={"Restaurant Name"}
+                underlineColorAndroid='transparent'
+                onChangeTextValue={(e) => this.changeValue('restaurantName', e)}
+                />
+            </View>
+            <View style={styles.slider}>
+              <Text style={styles.sliderText}>Average Price Per Person - RM{this.state.price}</Text>
+              <Slider
+                step={10}
+                maximumValue={500}
+                onValueChange={(e) => this.changeValue('price', e)} />
+            </View>
+            <View style={styles.locationContainer}>
+              <FontAwesome name="location-arrow" size={32} color="grey" style={styles.iconLocation} />
+              <View style={styles.formLocation}>
+                <FloatLabelTextInput
+                  placeholder={"Location"}
+                  underlineColorAndroid='transparent'
+                  onChangeTextValue={(e) => this.changeValue('location', e)}
+                  />
+              </View>
             </View>
           </View>
-        </View>
-        <Components.LinearGradient 
-          colors={['#F8964E', '#F8AE50']} 
-          style={styles.submit}>
-          <TouchableOpacity onPress={this._onPressButton}>
-            <Text style={styles.submitText}>Submit</Text>
-          </TouchableOpacity>
-        </Components.LinearGradient>
-
+          <Components.LinearGradient
+            colors={['#F8964E', '#F8AE50']}
+            style={styles.submit}>
+            <TouchableOpacity onPress={this._onPressButton}>
+              <Text style={styles.submitText}>Submit</Text>
+            </TouchableOpacity>
+          </Components.LinearGradient>
+        </KeyboardAwareScrollView>
         <PopupDialog
+          width={300}
+          height={200}
+          dialogStyle={styles.shadow}
+          haveOverlay={false}
           dialogTitle={<DialogTitle title="Pick Picture" />}
           ref={(popupDialog) => { this.popupDialog = popupDialog; } }
-          dialogAnimation = { slideAnimation }
+          dialogAnimation={slideAnimation}
           >
           <View>
-            <Text>Hello</Text>
+            <TouchableOpacity onPress={this.openCamera}>
+              <Text>Capture Image</Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity onPress={this.openGallery}>
+              <Text>Photo Gallery</Text>
+            </TouchableOpacity>
           </View>
         </PopupDialog>
-      </KeyboardAwareScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  shadow: {
+    borderWidth: StyleSheet.hairline,
+		borderColor: '#F5F5F5',
+    marginTop: -50,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {height: 0},
+        shadowOpacity: 0.1,
+        shadowRadius: 6,
+      },
+      android: {
+        elevation: 1,
+      },
+    }),
+  },
   container: {
     alignItems: 'center',
   },
