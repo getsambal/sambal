@@ -41,7 +41,8 @@ export default class AddFood extends React.Component {
     super(props);
     this.state = {
       price: 0,
-      animating: false
+      animating: false,
+      photo: "require('./assets/images/exponent-wordmark.png'),"
     };
   };
 
@@ -53,7 +54,7 @@ export default class AddFood extends React.Component {
 		let result = await ImagePicker.launchCameraAsync({})
 		.then(photo => {
 			if (!photo.cancelled) {
-				this.setState({ photo: photo.uri });
+				this.setState({ photo: "uri: " + photo.uri });
         this.popupDialog.closeDialog();
 				this.uploadToImgur(photo.uri);
 			} else {
@@ -67,7 +68,7 @@ export default class AddFood extends React.Component {
 		let result = await ImagePicker.launchImageLibraryAsync({})
 		.then(photo => {
 			if (!photo.cancelled) {
-				this.setState({ photo: photo.uri });
+				this.setState({ photo: "uri: " + photo.uri });
         this.popupDialog.closeDialog();
 				this.uploadToImgur(photo.uri);
 			} else {
@@ -86,6 +87,7 @@ export default class AddFood extends React.Component {
       type: 'image/jpeg',
     });
 
+    // Temporary KOMAS api key
     let response = await fetch('https://api.imgur.com/3/image',{
       method: 'post',
       headers: {
@@ -116,7 +118,7 @@ export default class AddFood extends React.Component {
               style={[styles.centering, {height: 80}]}
               size="large"
             />
-            <Image style={styles.image} source={{ uri: this.state.photo }} />
+            <Image style={styles.image} source={this.state.photo} />
             <Components.LinearGradient
               colors={['#F8964E', '#F8AE50']}
               style={styles.camera}>
