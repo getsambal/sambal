@@ -8,7 +8,9 @@
   "dependencies": {
     "@exponent/ex-navigation": "~2.0.0",
     "@exponent/vector-icons": "~2.0.3",
+    "exp": "^0.27.1",
     "exponent": "~11.0.2",
+    "global": "^4.3.1",
     "react": "~15.3.2",
     "react-native": "git+https://github.com/exponentjs/react-native#sdk-11.0.3",
     "react-native-elements": "^0.6.2",

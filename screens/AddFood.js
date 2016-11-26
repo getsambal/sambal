@@ -21,6 +21,8 @@ import FloatLabelTextInput from 'react-native-floating-label-text-input';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import PopupDialog, { DialogTitle, SlideAnimation }  from 'react-native-popup-dialog';
 
+import Debug from '../components/Debug';
+
 import Layout from '../constants/Layout.js';
 import Colors from '../constants/Colors.js';
 
@@ -38,9 +40,14 @@ export default class AddFood extends React.Component {
     this.state = {};
   };
 
+  changeValue = (key, data) => {
+    this.setState({[key]: data});
+  }
+
   render() {
     return (
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+        <Debug state={this.state}/>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={{uri: 'https://storybookstorage.s3.amazonaws.com/items/images/000/134/326/original/english.jpg'}} />
           <Components.LinearGradient 
@@ -59,19 +66,21 @@ export default class AddFood extends React.Component {
             <FloatLabelTextInput
               placeholder={"Food Name"}
               underlineColorAndroid='transparent'
+              onChangeTextValue={(e)=>this.changeValue('foodName', e)}
             />
           </View>
           <View style={styles.form}>
             <FloatLabelTextInput
               placeholder={"Restaurant Name"}
               underlineColorAndroid='transparent'
+              onChangeTextValue={(e)=>this.changeValue('restaurantName', e)}
             />
           </View>
           <View style={styles.slider}>
             <Text style={styles.sliderText}>Price Range</Text>
             <Slider
               {...this.props}
-              onValueChange={(value) => this.setState({value: value})} />
+              onValueChange={(e)=>this.changeValue('price', e)} />
           </View>
           <View style={styles.locationContainer}>
             <FontAwesome name="location-arrow" size={32} color="grey" style={styles.iconLocation}/>
@@ -79,6 +88,7 @@ export default class AddFood extends React.Component {
               <FloatLabelTextInput
                 placeholder={"Location"}
                 underlineColorAndroid='transparent'
+                onChangeTextValue={(e)=>this.changeValue('location', e)}
               />
             </View>
           </View>
