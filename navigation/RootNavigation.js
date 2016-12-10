@@ -30,7 +30,7 @@ export default class RootNavigation extends React.Component {
   render() {
     return (
       <StackNavigation 
-        initialRoute={Router.getRoute('expand')}
+        initialRoute={Router.getRoute('expandView')}
         defaultRouteConfig={{
           styles: NavigationStyles.Fade,
           navigationBar: {

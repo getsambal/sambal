@@ -4,7 +4,7 @@ import {
 
 import HomeScreen from '../screens/HomeScreen';
 import AddFood from '../screens/AddFood';
-import expand from '../screens/expandedView';
+import ExpandView from '../screens/ExpandedView';
 import RootNavigation from './RootNavigation';
 import Map from '../components/mapComponent';
 import Desc from '../components/descComponent';
@@ -18,5 +18,5 @@ export default createRouter(() => ({
   map: () => Map,
 	description: () => Desc,
 	image: () => Image,
-	expand: () => expand,
+	expandView: () => ExpandView,
 }));

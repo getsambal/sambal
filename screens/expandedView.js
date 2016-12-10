@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Animated, StyleSheet} from 'react-native';
+import { View, Text, ScrollView, Animated, StyleSheet, Platform, Linking} from 'react-native';
 
 import Map from '../components/mapComponent';
 import Desc from '../components/descComponent';
@@ -18,7 +18,7 @@ import Exponent, {
 
 const data = {
 	data_: {
-		"image": 'https://unsplash.it/500/500/?random',
+		"image": 'https://unsplash.it/200',
 		"map": '',
 		"desc": 'Food desc...'
 	}
@@ -28,6 +28,25 @@ export default class expandedView extends Component{
 
   state = {
     scrollY: new Animated.Value(0),
+    address: 'Aeon Big',
+    postalCode: '53300',
+    city: 'wangsa maju',
+  }
+
+  _handlePressDirections = () => {
+    let {
+      address,
+      postalCode,
+      city,
+    } = this.state;
+
+    let daddr = encodeURIComponent(`${address} ${postalCode}, ${city}`);
+
+    if (Platform.OS === 'ios') {
+      Linking.openURL(`http://maps.apple.com/?daddr=${daddr}`);
+    } else {
+      Linking.openURL(`http://maps.google.com/?daddr=${daddr}`);
+    }
   }
 
 	render(){
@@ -48,7 +67,7 @@ export default class expandedView extends Component{
 						<View style={{width: Layout.window.width, height: 370, backgroundColor: 'transparent',}} />
 
 						<View style={{paddingBottom: 20, backgroundColor: '#FAFAFA', minHeight: Layout.window.height - 370}}>
-							<Map />
+							<Map onPress={this._handlePressDirections}/>
 							<Desc desc={data.data_.desc}/>
 						</View>
 
@@ -58,7 +77,7 @@ export default class expandedView extends Component{
 		)
 	}
 
-	_renderHeroHeader() {
+  _renderHeroHeader() {
     let { scrollY } = this.state;
 
     let logoScale = scrollY.interpolate({
@@ -85,20 +104,21 @@ export default class expandedView extends Component{
       inputRange: [-1, 0, 1],
       outputRange: [1, 0, -1],
     });
+
     return (
       <View>
-        <Animated.View style={{height: 370 + 250, backgroundColor: '#FAFAFA',transform: [{translateY: heroBackgroundTranslateY}] }} />
+        <Animated.View style={[styles.AnimatedView, {transform: [{translateY: heroBackgroundTranslateY}]}]} />
 
-        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 370, paddingTop: 30, alignItems: 'center', justifyContent: 'center',}}>
+        <View style={styles.ImageContainerView}>
           <Animated.Image
             source={{uri: data.data_.image}}
-            style={{width: Layout.window.width, height: Layout.window.height/2, marginTop: 80 ,opacity: logoOpacity, transform: [{scale: logoScale}, {translateY: logoTranslateY}]}}
+            style={[styles.AnimatedImage, {transform: [{scale: logoScale}, {translateY: logoTranslateY}], opacity: logoOpacity}]}
             resizeMode="cover"
           />
-          <Animated.View style={{position: 'absolute', left: 0, right: 0, bottom: 0,transform: [{translateY: gradientTranslateY}]}}>
+          <Animated.View style={[styles.AnimatedViewGradient, {transform: [{translateY: gradientTranslateY}]}]}>
             <Components.LinearGradient
               colors={['transparent', 'rgba(0,0,0,0.07)']}
-              style={{width: Layout.window.width, height: 30}}
+              style={styles.LinearGradient}
             />
           </Animated.View>
         </View>
@@ -106,3 +126,37 @@ export default class expandedView extends Component{
     );
   }
 }
+
+const styles = StyleSheet.create({
+
+  AnimatedView:{
+    height: 370 + 250,
+    backgroundColor: '#FAFAFA',
+  },
+  ImageContainerView:{
+    position: 'absolute', 
+    top: 0, 
+    left: 0, 
+    right: 0, 
+    height: 370, 
+    paddingTop: 15, 
+    alignItems: 'center', 
+    justifyContent: 'center',
+  },
+  AnimatedImage:{
+    width: Layout.window.width, 
+    height: Layout.window.height/2, 
+    marginTop: 80,
+  },
+  AnimatedViewGradient:{
+    position: 'absolute', 
+    left: 0, 
+    right: 0, 
+    bottom: 0,  
+  },
+  LinearGradient: {
+    width: Layout.window.width,
+    height: 30 
+  },
+
+})
