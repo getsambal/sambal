@@ -9,7 +9,8 @@ import RootNavigation from './RootNavigation';
 import Map from '../components/mapComponent';
 import Desc from '../components/descComponent';
 import Image from '../components/imageComponent';
-
+import Price from '../components/priceCard';
+import Food from '../components/foodDetails';
 
 export default createRouter(() => ({
   home: () => HomeScreen,
@@ -19,4 +20,7 @@ export default createRouter(() => ({
 	description: () => Desc,
 	image: () => Image,
 	expandView: () => ExpandView,
+	price: () => Price,
+	food: () => Food,
 }));
+

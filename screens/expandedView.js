@@ -5,6 +5,8 @@ import Map from '../components/mapComponent';
 import Desc from '../components/descComponent';
 import Image from '../components/imageComponent';
 import Layout from '../constants/Layout';
+import Price from '../components/priceCard';
+import Food from '../components/foodDetails';
 
 import {
   NavigationBar,
@@ -18,9 +20,11 @@ import Exponent, {
 
 const data = {
 	data_: {
-		"image": 'https://unsplash.it/200',
-		"map": '',
-		"desc": 'Food desc...'
+		"image": 'https://img.grouponcdn.com/seocms/swZZyUMNMcZ84TUGjiQLLq/malaysian-food_hero-600x390.jpg',
+		"desc": 'Food desc...',
+    "price": 'RM 4.50 - 6.00',
+    "name": 'Nasi Lemak',
+    "restaurant": 'Nasi Lemak Sedap',
 	}
 }
 
@@ -67,7 +71,9 @@ export default class expandedView extends Component{
 						<View style={{width: Layout.window.width, height: 370, backgroundColor: 'transparent',}} />
 
 						<View style={{paddingBottom: 20, backgroundColor: '#FAFAFA', minHeight: Layout.window.height - 370}}>
+              <Food details={data.data_}/>
 							<Map onPress={this._handlePressDirections}/>
+              <Price price={data.data_.price}/>
 							<Desc desc={data.data_.desc}/>
 						</View>
 
