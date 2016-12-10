@@ -6,24 +6,31 @@ import {
   View,
 } from 'react-native';
 
-// TODO: Change text to Pacifico
-import { MonoText } from '../components/StyledText';
+import {
+  Font,
+  Components
+} from 'exponent';
+
 import Cards from '../components/Cards.js';
 import Layout from '../constants/Layout.js';
+import Colors from '../constants/Colors';
 
 export default class HomeScreen extends React.Component {
   static route = {
     navigationBar: {
       title: 'Sambal',
-      visible: true,
+      titleStyle: [Font.style('pacifico'), {fontSize: 22}],
+      visible: false,
     },
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Cards style={{flex:1}}/>
-      </View>
+      <Components.LinearGradient 
+        colors={['#FE8730', '#F8AE50']}
+        style={styles.container}>
+        <Cards/>
+      </Components.LinearGradient>
     );
   }
 }
@@ -31,8 +38,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    width: Layout.window.width,
-    height: 400,
+    backgroundColor: Colors.primary,
+    paddingTop: 24,
   },
 });

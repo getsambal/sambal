@@ -8,10 +8,15 @@ import {
     Image,
     TouchableOpacity,
     Dimensions,
-    Modal
+    Modal,
+    Platform
 } from 'react-native';
 
-import { FontAwesome } from '@exponent/vector-icons';
+import {
+  Components
+} from 'exponent';
+
+import { FontAwesome, Ionicons, MaterialIcons, Entypo } from '@exponent/vector-icons';
 
 import clamp from 'clamp';
 import Defaults from './Defaults.js';
@@ -179,17 +184,6 @@ class SwipeCards extends React.Component {
     }).start(this._resetState.bind(this));
   }
 
-//Share button
-  _shareButton() {
-    // this.props.handleLeft(this.state.card);
-    // this.props.cardRemoved
-    //   ? this.props.cardRemoved(this.props.cards.indexOf(this.state.card))
-    //   : null;
-    // Animated.timing(this.state.pan, {
-    //   toValue: {x: -1000, y: 0},
-    // }).start(this._resetState.bind(this));
-  }
-
   render() {
     let { pan, enter, } = this.state;
 
@@ -199,7 +193,7 @@ class SwipeCards extends React.Component {
     let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.5, 1, 0.5]});
     let scale = enter;
 
-    let animatedCardstyles = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
+    let animatedCardstyles = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
 
     let yupOpacity = pan.x.interpolate({inputRange: [0, 150], outputRange: [0, 1]});
     let yupScale = pan.x.interpolate({inputRange: [0, 150], outputRange: [0.5, 1], extrapolate: 'clamp'});
@@ -211,12 +205,18 @@ class SwipeCards extends React.Component {
 
     return (
       <View style={styles.container}>
-        {/* 
-          this is weird ass JSX comments,
-          will re-implement modal style add food 
-          once i have completed it in screen based solution
-        */}
-        {/* <AddFood modalState={this.state.modalVisible} modalVisible={this.setModalVisible} /> */}
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Sambal</Text>
+          <View style={styles.headerButtons}>
+            <TouchableOpacity>
+              <MaterialIcons name="refresh" size={40} color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <MaterialIcons name="more-vert" size={40} color="white" />
+            </TouchableOpacity>
+          </View>
+        </View>
+
         { this.state.card
             ? (
             <Animated.View style={[styles.card, animatedCardstyles]} {...this._panResponder.panHandlers}>
@@ -242,17 +242,29 @@ class SwipeCards extends React.Component {
             </Animated.View>
           )
           : null }
-      <View style={styles.buttonFooterContainer}>
-	      <TouchableOpacity onPress={this._backButton.bind(this)} style={styles.buttonBack}><Text style={styles.buttonTextBack}><FontAwesome name="undo" size={30} color="#fff" /></Text></TouchableOpacity>
- 	      <TouchableOpacity onPress={this._nopeButton.bind(this)} style={styles.buttonNope}><Text style={styles.buttonTextNope}><FontAwesome name="remove" size={30} color="#fff" /></Text></TouchableOpacity>
-	      <TouchableOpacity onPress={this._yupButton.bind(this)} style={styles.buttonYup}><Text style={styles.buttonTextYup}><FontAwesome name="star" size={30} color="#fff" /></Text></TouchableOpacity>
-        <TouchableOpacity 
-          onPress={this.props.addFood} 
-          style={styles.buttonShare}
-        >
-          <Text style={styles.buttonTextShare}><FontAwesome name="plus" size={30} color="#fff" /></Text>
-        </TouchableOpacity>
-	    </View>
+        <View style={styles.buttonFooterContainer}>
+
+
+          <TouchableOpacity
+            style={[styles.buttons, styles.buttonBack]}
+            onPress={this._backButton.bind(this)}>
+            <FontAwesome style={{marginLeft: -3, marginTop: -4}} name="angle-left" size={40} color="#fff" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={this.props.addFood}
+            style={[styles.buttons, styles.buttonAdd]}>
+            <Entypo name="plus" size={40} color="#FE8730" />
+          </TouchableOpacity>
+
+
+          <TouchableOpacity
+            style={[styles.buttons, styles.buttonYup]}
+            onPress={this._yupButton.bind(this)}>
+            <FontAwesome style={{marginRight: -3, marginTop: -4}} name="angle-right" size={40} color="#fff" />
+          </TouchableOpacity>
+
+        </View>
       </View>
     );
   }
@@ -287,10 +299,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
   },
-  card: {
-    top: 20,
+  header: {
+    flex: 0,
+    width: width - 40,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  headerText: {
+    fontFamily: 'pacifico',
+    color: 'white',
+    fontSize: 32,
+    width: 200,
+  },
+  headerButtons: {
+    flexDirection: 'row',
+    marginRight: -10,
+  },
+  card: {
+    top: 5,
+    alignItems: 'center',
+    zIndex: 2,
     backgroundColor: 'transparent',
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {height: 0},
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
   yup: {
     borderColor: '#4CAF50',
@@ -323,82 +364,46 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   buttonFooterContainer: {
+    flex: 0,
+    width: width - 40,
     flexDirection: 'row',
-    width: 90 * vw,
-    height: 10 * vh,
-    marginLeft: 5 * vmin,
-    marginRight: 8 * vmin,
+    marginTop: 20,
+    marginBottom: 20,
     justifyContent: 'space-around',
-    position: 'absolute',
-    bottom: 4 * vh,
+    paddingHorizontal: 30
+  },
+  buttons: {
+    width: 70,
+    height: 70,
+    borderWidth: 1,
+    borderRadius: 35,
+    borderColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F8AE50',
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {height: 0},
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+      },
+      android: {
+        elevation: 1,
+      },
+    }),
   },
   buttonBack: {
-    width: 21 * vw,
-    height: 12 * vh,
-    borderWidth: 2.3 * vmin,
-    borderRadius: 10 * vmin,
-    borderColor: 'white',
-    // backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 25,
-    marginTop: 5,
+    
   },
-  buttonTextBack: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'black',
+  buttonAdd: {
+    borderWidth: 0,
+    backgroundColor: 'white',
+
   },
   buttonYup: {
-    width: 21 * vw,
-    height: 12 * vh,
-    borderWidth: 2.3 * vmin,
-    borderRadius: 10 * vmin,
-    borderColor: 'white',
-    // backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 5,
-  },
-  buttonTextYup: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  buttonNope: {
-    width: 21 * vw,
-    height: 12 * vh,
-    borderWidth: 2.3 * vmin,
-    borderRadius: 10 * vmin,
-    borderColor: 'white',
-    // backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 5,
-  },
-  buttonTextNope: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  buttonShare: {
-    width: 21 * vw,
-    height: 12 * vh,
-    borderWidth: 2.3 * vmin,
-    borderRadius: 10 * vmin,
-    borderColor: 'white',
-    // backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 25,
-    marginTop: 5,
-  },
-  buttonTextShare: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: 'white',
 
-  }
+  },
 });
 
 export default SwipeCards

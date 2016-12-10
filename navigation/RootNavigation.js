@@ -5,6 +5,7 @@ import {
   DeviceEventEmitter,
   StyleSheet,
   View,
+  Platform
 } from 'react-native';
 import {
   StackNavigation,
@@ -12,11 +13,13 @@ import {
   TabNavigationItem,
   NavigationStyles
 } from '@exponent/ex-navigation';
+
 import {
   FontAwesome,
 } from '@exponent/vector-icons';
+
 import {
-  Font,
+  Components
 } from 'exponent';
 
 import Colors from '../constants/Colors';
@@ -29,13 +32,19 @@ export default class RootNavigation extends React.Component {
       <StackNavigation 
         initialRoute={Router.getRoute('expand')}
         defaultRouteConfig={{
-          styles: NavigationStyles.SlideHorizontal,
+          styles: NavigationStyles.Fade,
           navigationBar: {
-            backgroundColor: Colors.primary,
             tintColor: '#fff',
-            titleStyle: [styles._titleStyle, Font.style('pacifico')]
+            renderBackground: (props) => 
+              <View style={[{width: window.width }]}>
+                <Components.LinearGradient
+                  colors={['#F8964E', '#F8AE50']} 
+                  style={styles.navbar}
+                />
+              </View>,
           },
-        }} 
+        }}
+        
       />
     );
   }
@@ -52,6 +61,21 @@ export default class RootNavigation extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  navbar: {
+    position: 'absolute', 
+    left: 0, 
+    right: 0, 
+    top: 0, 
+    height: 64,
+    ...Platform.select({
+      ios: {
+        height: 64,
+      },
+      android: {
+        height: 96,
+      },
+    }),
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -59,7 +83,4 @@ const styles = StyleSheet.create({
   selectedTab: {
     color: Colors.tabIconSelected,
   },
-  _titleStyle: {
-    fontSize: 22
-  }
 });
