@@ -9,6 +9,6 @@ A food discovery app with a tinder like swipe card interface
 1. You need to update it to the latest version of Expo or the minimum supported version in XDE and Expo app (Pull request welcome)
 2. Then just run it like normal Expo React Native app
 ## Contributor
-- [joevo2](https://github.com/joevo2)
-- [burhan3759](https://github.com/burhan3759)
-- [adam](https://www.facebook.com/yanagi.rikou)
+- [joevo2](https://github.com/joevo2) - developer
+- [burhan3759](https://github.com/burhan3759) - developer
+- [adam](https://www.facebook.com/yanagi.rikou) - designer
