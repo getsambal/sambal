@@ -1,36 +1,18 @@
 import React from 'react';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-import {
-  Font,
-  Components
-} from 'exponent';
+import * as Font from 'expo-font';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import Cards from '../components/Cards.js';
-import Layout from '../constants/Layout.js';
 import Colors from '../constants/Colors';
 
 export default class HomeScreen extends React.Component {
-  static route = {
-    navigationBar: {
-      title: 'Sambal',
-      titleStyle: [Font.style('pacifico'), {fontSize: 22}],
-      visible: false,
-    },
-  }
-
   render() {
     return (
-      <Components.LinearGradient 
-        colors={['#FE8730', '#F8AE50']}
-        style={styles.container}>
-        <Cards/>
-      </Components.LinearGradient>
+      <LinearGradient colors={['#FE8730', '#F8AE50']} style={styles.container}>
+        <Cards />
+      </LinearGradient>
     );
   }
 }

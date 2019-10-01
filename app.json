@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Sambal",
+    "description":"No description",
+    "slug": "sambal-exp",
+    "privacy": "public",
+    "sdkVersion": "35.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "0.1.1",
+    "orientation": "portrait",
+    "primaryColor": "#f8a551",
+    "icon": "./assets/images/sambal_icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F8931E"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sambal.exp"
+    },
+    "android": {
+      "package": "com.sambal.exp"
+    }
+  }
+}

@@ -1,37 +1,38 @@
 [
-  {
-    "name": "Wantan Mee", 
-    "image": "https://demwvw9lpu8ak.cloudfront.net/attachments/7a060023616d7110399598caa60b016673149de8/store/fill/800/500/7a9fbb97f075b585a6af04216fa305fe140972a9dc53d7a6b2d8f9f17a67/featured_image.jpg"
-  },
-  {
-    "name": "NASI LEMAK", 
-    "image": "https://storybookstorage.s3.amazonaws.com/items/images/000/134/326/original/english.jpg"
-  },
-  {
-    "name": "CHEE CHEONG FUN", 
-    "image": "http://www.rasamalaysia.com/uploaded_images/cheongfun.jpg"
-  },
-  {
-    "name": "ROTI CANAI", 
-    "image": "http://www.templeofthai.com/images/asian-food-life/Malaysia-Roti-Canai-960x640.jpg"
-  },
-  {
-    "name": "CHILLI PAN MEE", 
-    "image": "http://www.chillipanmee.com/wp-content/uploads/2010/02/chilli-pan-mee-4.jpg"
-  },
-  {
-    "name": "SUSHI", 
-    "image": "http://az616578.vo.msecnd.net/files/2016/05/27/635999646476505798-1665549773_SUSHI%20COVER.jpg"
-  },
-  {
-    "name": "SATAY", 
-    "image": "http://www.healthxchange.com.sg/healthyliving/DietandNutrition/PublishingImages/Satay-Not-Just-a-Sinful-Indulgence-Pic.jpg"
-  },
-  {
-    "name": "MEE CURRY", 
-    "image": "http://www.halfhourmeals.com/image/recipe/easy-peasy-curry-mee_large.jpg"
-  },
-  {
-    "name": "CHICKEN RICE", 
-    "image": "http://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-86.jpg"},
-]
+    {
+      "name": "Wantan Mee", 
+      "image": "https://demwvw9lpu8ak.cloudfront.net/attachments/7a060023616d7110399598caa60b016673149de8/store/fill/800/500/7a9fbb97f075b585a6af04216fa305fe140972a9dc53d7a6b2d8f9f17a67/featured_image.jpg"
+    },
+    {
+      "name": "NASI LEMAK", 
+      "image": "https://storybookstorage.s3.amazonaws.com/items/images/000/134/326/original/english.jpg"
+    },
+    {
+      "name": "CHEE CHEONG FUN", 
+      "image": "http://www.rasamalaysia.com/uploaded_images/cheongfun.jpg"
+    },
+    {
+      "name": "ROTI CANAI", 
+      "image": "http://www.templeofthai.com/images/asian-food-life/Malaysia-Roti-Canai-960x640.jpg"
+    },
+    {
+      "name": "CHILLI PAN MEE", 
+      "image": "http://www.chillipanmee.com/wp-content/uploads/2010/02/chilli-pan-mee-4.jpg"
+    },
+    {
+      "name": "SUSHI", 
+      "image": "http://az616578.vo.msecnd.net/files/2016/05/27/635999646476505798-1665549773_SUSHI%20COVER.jpg"
+    },
+    {
+      "name": "SATAY", 
+      "image": "http://www.healthxchange.com.sg/healthyliving/DietandNutrition/PublishingImages/Satay-Not-Just-a-Sinful-Indulgence-Pic.jpg"
+    },
+    {
+      "name": "MEE CURRY", 
+      "image": "http://www.halfhourmeals.com/image/recipe/easy-peasy-curry-mee_large.jpg"
+    },
+    {
+      "name": "CHICKEN RICE", 
+      "image": "http://steamykitchen.com/wp-content/uploads/2009/08/hainanese-chicken-86.jpg"
+    }
+  ]
