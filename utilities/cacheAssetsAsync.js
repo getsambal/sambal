@@ -1,13 +1,8 @@
-import {
-  Asset,
-  Font,
-} from 'exponent';
+import * as Font from 'expo-font';
+import { Asset } from 'expo-asset';
 
-export default function cacheAssetsAsync({images = [], fonts = []}) {
-  return Promise.all([
-    ...cacheImages(images),
-    ...cacheFonts(fonts),
-  ]);
+export default function cacheAssetsAsync({ images = [], fonts = [] }) {
+  return Promise.all([...cacheImages(images), ...cacheFonts(fonts)]);
 }
 
 function cacheImages(images) {

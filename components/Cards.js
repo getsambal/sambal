@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,99 +6,94 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
-  Platform
+  Platform,
 } from 'react-native';
 
-import {
-  Components
-} from 'exponent';
+import { LinearGradient } from 'expo-linear-gradient';
 
-import { 
-  withNavigation 
-} from '@exponent/ex-navigation';
+import { withNavigation } from 'react-navigation';
 
 import Router from '../navigation/Router';
 import Colors from '../constants/Colors';
 import SwipeCards from './swipe-cards';
-import Cards from '../assets/fixtures/CardsData.json'
+import Cards from '../assets/fixtures/CardsData.json';
 
-class Card extends React.Component{
+class Card extends React.Component {
   render() {
     return (
       <TouchableOpacity style={styles.card} onPress={this.props.gotoCardDetail}>
-        <Image style={styles.thumbnail} source={{uri: this.props.image}}  />
+        <Image style={styles.thumbnail} source={{ uri: this.props.image }} />
         <Text style={styles.text}>{this.props.name}</Text>
         <Text style={styles.restaurant}>Restaurant Z</Text>
 
-        <View style={{flexDirection: 'row'}}>
-          <View style={{flexDirection: 'column'}}>
-            <Components.LinearGradient 
-              colors={['#F8964E', '#F8AE50']}  
-              style={styles.recommend}>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: 'column' }}>
+            <LinearGradient
+              colors={['#F8964E', '#F8AE50']}
+              style={styles.recommend}
+            >
               <Text style={styles.recommend_text}>1.5K</Text>
               <View>
                 <Text style={styles.rec_desc}>Recommend</Text>
                 <Text style={styles.rec_desc}>This Card!</Text>
               </View>
-            </Components.LinearGradient>
+            </LinearGradient>
           </View>
           <Text style={styles.distance}>200M away</Text>
         </View>
-        
       </TouchableOpacity>
-    )
+    );
   }
 }
 
-class NoMoreCards extends React.Component{
+class NoMoreCards extends React.Component {
   render() {
     return (
       <View style={styles.noMoreCards}>
         <Text>No more cards</Text>
       </View>
-    )
+    );
   }
 }
 
 @withNavigation
-export default class extends React.Component{
+export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       cards: Cards,
-      outOfCards: false
-    }
+      outOfCards: false,
+    };
   }
 
-  handleYup = (card) => {
-    console.log("yup")
-  }
+  handleYup = card => {
+    console.log('yup');
+  };
 
-  handleNope = (card)=> {
-    console.log("nope")
-  }
+  handleNope = card => {
+    console.log('nope');
+  };
 
-  cardRemoved = (index) => {
+  cardRemoved = index => {
     console.log(`The index is ${index}`);
-    let CARD_REFRESH_LIMIT = 3
+    let CARD_REFRESH_LIMIT = 3;
     if (this.state.cards.length - index <= CARD_REFRESH_LIMIT + 1) {
       // console.log(`There are only ${this.state.cards.length - index - 1} cards left.`);
       if (!this.state.outOfCards) {
         this.setState({
           cards: this.state.cards,
-        })
+        });
       }
-
     }
-  }
+  };
 
   _gotoCardDetail = () => {
-		this.props.navigator.push(Router.getRoute('expand'));
-	}
+    this.props.navigation.navigate('expandView');
+  };
 
   _gotoAddFood = () => {
-    this.props.navigator.push(Router.getRoute('addFood'));
-  }
+    this.props.navigation.navigate('addFood');
+  };
 
   render() {
     return (
@@ -107,18 +102,20 @@ export default class extends React.Component{
         style={styles.swipeCard}
         cards={this.state.cards}
         loop={true}
-        renderCard={(cardData) => <Card {...cardData} gotoCardDetail={this._gotoCardDetail}/> }
+        renderCard={cardData => (
+          <Card {...cardData} gotoCardDetail={this._gotoCardDetail} />
+        )}
         showYup={false}
         showNope={false}
         handleYup={this.handleYup}
         handleNope={this.handleNope}
         cardRemoved={this.cardRemoved}
       />
-    )
+    );
   }
 }
 
-let {height, width} = Dimensions.get('window');
+let { height, width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   swipeCard: {
@@ -138,8 +135,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     width: 330,
-    height: height-350,
-    resizeMode: 'cover'
+    height: height - 350,
+    resizeMode: 'cover',
   },
   text: {
     fontSize: 26,
@@ -175,15 +172,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   rec_desc: {
-    fontSize: 10, 
+    fontSize: 10,
     color: 'white',
     backgroundColor: 'transparent',
     paddingHorizontal: 6,
   },
   distance: {
-    paddingTop: 10, paddingLeft: 40,
+    paddingTop: 10,
+    paddingLeft: 40,
     fontSize: 20,
     color: '#754b33',
   },
-})
-
+});
