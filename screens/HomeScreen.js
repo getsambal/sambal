@@ -9,7 +9,6 @@ import Colors from '../constants/Colors';
 
 export default class HomeScreen extends React.Component {
   render() {
-    console.log('Inside render');
     return (
       <LinearGradient colors={['#FE8730', '#F8AE50']} style={styles.container}>
         <Cards />
